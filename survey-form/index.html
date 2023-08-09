@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <h1 id="title">Survey Form</h1>
+        <p id="description">Your opinion matters, thank you for your time</p>
+
+        <form action="post" id="survey-form">
+            <div class="personal-info">
+                <label for="name" id="name-label">Name:</label><input type="text" name="name" id="name" placeholder="Your name here" required>
+                <label for="email" id="email-label">Email:</label><input type="email" name="email" id="email" placeholder="email@email.com" required>
+                <label for="number" id="number-label">Age:</label><input type="number" name="number" id="number" min="18" max="120" placeholder="Age">
+            </div>
+
+            <div class="question">
+            <label for="science-option">Are you studying a scientific carrer?</label><select name="math-option" id="dropdown">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            </div>
+
+            <div class="radio-input">
+                <legend>Do you have trouble studying and understanding math?</legend>
+                
+                <label for="definitely"><input type="radio" name="radio-option" value="definitely">Definitely</label>
+                <label for="sometimes"><input type="radio" name="radio-option" value="sometimes">Sometimes</label>
+                <label for="no"><input type="radio" name="radio-option" value="no">Not at all</label>
+            </div>
+
+            <div class="checkbox-input">
+                <legend>What are the most difficult to you?</legend>
+                <input type="checkbox" name="algebra" value="algebra"> <label for="algebra">Algebra</label>
+                <input type="checkbox" name="trigonometry" value="trigonometry"> <label for="trigonometry">Trigonometry</label>
+                <input type="checkbox" name="geometry" value="geometry"> <label for="geometry">Geometry</label>
+                <input type="checkbox" name="calculus" value="calculus"> <label for="calculus">Calculus</label>
+                <input type="checkbox" name="other" value="other"> <label for="other">Other</label>
+            </div>
+
+            <div>
+            <legend>Any additional comments?</legend>
+            <textarea name="comments" id="comments" ></textarea>
+            </div>
+
+            <button type="submit" id="submit">Submit</button>
+        </form>
+    </main>
+</body>
+</html>

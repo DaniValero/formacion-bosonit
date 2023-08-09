@@ -1,0 +1,26 @@
+body {
+    max-width: 100%;
+    text-align: center;
+    background-color: azure;
+}
+
+.personal-info, .question {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 30%;
+    margin: 0 auto;
+}
+
+.personal-info label {
+    text-align: start;
+    margin: 5px 0;
+}
+
+div {
+    margin-top: 20px;
+}
+
+button {
+    margin-top: 10px;
+}
