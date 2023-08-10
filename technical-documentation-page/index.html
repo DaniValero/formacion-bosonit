@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>React Docs</title>
+</head>
+
+<body>
+    <nav id="navbar">
+        <header>
+            <h1>React Documentation</h1>
+            <ul>
+                <li><a class="nav-link" href="#introduction_to_react">Introduction to React</a></li>
+                <li><a class="nav-link" href="#components_and_props">Components and Props</a></li>
+                <li><a class="nav-link" href="#state">State</a></li>
+                <li><a class="nav-link" href="#hooks">Hooks</a></li>
+                <li><a class="nav-link" href="#jsx_and_rendering">JSX and Rendering</a></li>
+                <li><a class="nav-link" href="#conditional_rendering">Conditional Rendering</a></li>
+                <li><a class="nav-link" href="#lists">Lists</a></li>
+                <li><a class="nav-link" href="#forms">Forms</a></li>
+                <li><a class="nav-link" href="#routing">Routing</a></li>
+                <li><a class="nav-link" href="#styling">Styling</a></li>
+                <li><a class="nav-link" href="#best_practices">Best Practices</a></li>
+                <li><a class="nav-link" href="#additional_resources">Additional Resources</a></li>
+            </ul>
+        </header>
+    </nav>
+    
+    <main id="main-doc">
+        <section class="main-section" id="introduction_to_react">
+            <header>
+                <h2>Introduction to React</h2>
+            </header>
+            <p>
+                React is a JavaScript library for building user interfaces. It provides a component-based architecture that
+                encourages reusability and modularity. With React, you can create encapsulated components that manage their
+                own state and efficiently update the UI when data changes. One of React's key features is the virtual DOM,
+                which enhances rendering performance by minimizing direct DOM manipulations.
+            </p>
+            <h3>React Features and Benefits</h3>
+            <p>
+                React offers a declarative syntax, making it easier to understand and maintain UI code. Its unidirectional
+                data flow ensures predictable updates and helps prevent common UI bugs. React's extensive ecosystem and
+                supportive community provide a wide range of tools, libraries, and resources for building robust
+                applications.
+            </p>
+        </section>
+    
+        <section class="main-section" id="components_and_props">
+            <header>
+                <h2>Components and Props</h2>
+            </header>
+            <p>
+                React applications are composed of components, which are reusable building blocks. Components encapsulate UI
+                elements and behavior, allowing you to create modular and maintainable code. By using props, you can pass
+                data from parent to child components, enabling dynamic and data-driven rendering.
+
+                <code>Example code</code>
+            </p>
+            <h3>Component types:</h3>
+            <li>Functional Components: In simple words, Functional components are javascript functions</li> 
+            <li>Class Components</li>
+            <li>Higher-Order Components</li>
+            <li>Presentational Components</li>
+            <li>Container components</li>
+        </section>
+    
+        <section class="main-section" id="state">
+            <header>
+                <h2>State</h2>
+            </header>
+            <p>
+                Component state is used to manage data that can change over time and affect the component's behavior and
+                rendering. You can update state using the `setState` method, triggering re-rendering and reflecting the
+                updated data in the UI. Lifecycle methods provide opportunities to perform actions at specific points in a
+                component's lifecycle, such as initialization, updates, and unmounting.
+            </p>
+        </section>
+    
+        <section class="main-section" id="hooks">
+            <header>
+                <h2>Hooks</h2>
+            </header>
+            <p>
+                Hooks are functions that allow you to use React features in functional components. `useState` enables you to
+                add state to functional components, while `useEffect` lets you perform side effects in response to component
+                changes. Other hooks, like `useContext` and custom hooks, provide advanced functionality for managing state,
+                context, and logic.
+                <code>Example code</code>
+            </p>
+        </section>
+    
+        <section class="main-section" id="jsx_and_rendering">
+            <header>
+                <h2>JSX and Rendering</h2>
+            </header>
+            <p>
+                JSX (JavaScript XML) is a syntax extension for JavaScript that allows you to write UI elements in a familiar
+                HTML-like format within your JavaScript code. React's rendering process converts JSX elements into the
+                actual DOM elements that are displayed in the browser. This makes it easier to visualize and understand the
+                structure of your UI components.
+                <code>Example code</code>
+            </p>
+        </section>
+    
+        
+    <section class="main-section" id="conditional_rendering">
+        <header>
+            <h2>Conditional Rendering</h2>
+        </header>
+        <p>
+            Conditional rendering in React allows you to display different content based on certain conditions. You can use
+            conditional statements and the ternary operator to control what gets rendered in your components. This is useful
+            for showing or hiding elements, rendering fallback content, or responding to user interactions.
+            <code>Example code</code>
+        </p>
+    </section>
+
+    <section class="main-section" id="lists">
+        <header>
+            <h2>Lists</h2>
+        </header>
+        <p>
+            When rendering lists of elements in React, you should use the `map` function to create an array of JSX elements.
+            Each element in the array should have a unique "key" attribute, which helps React efficiently update the DOM
+            when the list changes. Properly using keys improves performance and helps maintain component state.
+        </p>
+    </section>
+
+    <section class="main-section" id="forms">
+        <header>
+            <h2>Forms</h2>
+        </header>
+        <p>
+            React provides a controlled approach to handling form elements and user events. You can use state to store form
+            input values and update them through event handlers. By managing form data in this way, you can create
+            interactive and dynamic forms while ensuring consistent and predictable behavior.
+            <code>Example code</code>
+        </p>
+    </section>
+
+    <section class="main-section" id="routing">
+        <header>
+            <h2>Routing</h2>
+        </header>
+        <p>
+            React Router is a library that enables client-side routing in your React applications. It allows you to define
+            different routes and map them to specific components. With React Router, you can create a multi-page experience
+            within a single-page application, enabling smooth navigation and seamless user interactions.
+            <code>Example code</code>
+        </p>
+    </section>
+
+    <section class="main-section" id="styling">
+        <header>
+            <h2>Styling</h2>
+        </header>
+        <p>
+            Styling in React can be achieved using CSS classes, inline styles, or CSS-in-JS libraries like
+            styled-components. CSS-in-JS libraries enable you to write component-specific styles directly in your JavaScript
+            code. This approach helps maintain a clear separation of concerns and allows for more modular and reusable
+            styling.
+        </p>
+    </section>
+
+    <section class="main-section" id="best_practices">
+        <header>
+            <h2>Best Practices</h2>
+        </header>
+        <p>
+            When working with React, following best practices can enhance your development process and improve the
+            maintainability of your code. Consider structuring your components for reusability, optimizing performance
+            through memoization, and adhering to consistent coding patterns. Regularly updating dependencies and staying
+            informed about the latest React developments is also crucial.
+        </pheader>
+        <p>
+            To continue your learning journey with React, explore the official React documentation for in-depth explanations
+            and examples. Additionally, various online tutorials, blogs, and video courses are available to help you master
+            React concepts and build advanced applications.
+        </p>
+    </section>
+
+    <section class="main-section" id="additional_resources">
+        <header>
+            <h2>Additional Resources</h2>
+        </header>
+        <p>Visit the official React documentation <a href="https://react.dev/">clicking here</a></p>
+    </section>
+
+    
+    </section>
+
+    
+    </main>
+</body>
+
+</html>
