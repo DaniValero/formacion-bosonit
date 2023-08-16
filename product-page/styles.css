@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+#nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    z-index: 100;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+}
+
+#video {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+}
+
+#form {
+    text-align: center;
+    padding: 20px;
+}
+
+#email {
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#submit {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    #nav-bar {
+        flex-direction: column;
+    }
+}
