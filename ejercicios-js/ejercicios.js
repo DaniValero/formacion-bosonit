@@ -131,10 +131,155 @@ console.log(redondeo(1.123456789, 6));
 // Ejemplo de uso de la función:
 
 // const result = returnFalsyValues({ a: 1, b: '2', c: 3 }, x => typeof x === 'string')
-
-
 // console.log(result); // {a: 1, c: 3}
 
+function devuelveFalsy(obj, parametro) {
+
+  if (typeof obj.a === typeof parametro) {
+    return console.log("ey")
+  }
+
+}
+
+// console.log(
+//   devuelveFalsy({ a: 1, b: "2", c: 3 }, (x) => typeof x === "string")
+// );
+
+
+// Ejercicio 8
+// Crea una función que convierta un número de bytes en un formato con valores legibles ('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB')
+// La función debe tener 2 parámetros:
+// Primer parámetro debe ser el número de bytes
+// Segundo parámetro debe ser un número especificando la cantidad de dígitos a los que se debe truncar el resultado (esto se puede hacer con Number.prototype.toPrecision()). Por defecto, este parámetro debe de tener un valor de 3.
+
+// Ejemplo de uso de la función:
+// const result = fromBytesToFormattedSizeUnits(1000);
+// console.log(result); // 1KB
+
+
+// const result = fromBytesToFormattedSizeUnits(123456789);
+// console.log(result); // 123MB
+
+
+// const result = fromBytesToFormattedSizeUnits(-12145489451.5932, 5);
+// console.log(result); // -12.145GB
+
+
+function fromBytesToFormattedSizeUnits(numero, filtro = 3) {
+
+  let num1 = 0
+
+  if (numero > 0) {
+    num1 = numero
+  } else {
+    num1 = numero * -1
+  }
+
+
+  if (num1 <= 1000) {
+    console.log(numero.toPrecision(filtro) + "B")
+  }
+  else if (num1 >= 1000 && num1 < 100000) {
+    console.log((numero / 1000).toPrecision(filtro) + "KB");
+  } else if (num1 >= 100000 && num1 <= 999999999) {
+    console.log((numero / 1000000).toPrecision(filtro) + "MB");
+  } else if (num1 >= 1000000000 && num1 <= 99999999999) {
+    console.log((numero / 1000000000).toPrecision(filtro) + "GB");
+    
+  }
+
+
+// Puede que sea más conveniente hacerlo con potencias
+// console.log(Math.pow(10, 6));
+
+}
+console.log(fromBytesToFormattedSizeUnits(-12145489451.5932, 5));
 
 
 
+
+// Ejercicio 9
+// Crea una función que a partir de un objeto de entrada, retorne un objeto asegurándose que las claves del objeto estén en lowercase.
+// La función debe tener un objeto como único parámetro.
+// Ejemplo de uso de la función:
+// const myObject = { NamE: 'Charles', ADDress: 'Home Street' };
+// const myObjLowercase = toLowercaseKeys(myObject);
+// console.log(myObjLowercase); // { name: 'Charles', address: 'Home Street' }
+
+function minusculas(objeto){
+
+  const keys = Object.keys(objeto)
+  const values = Object.values(objeto);
+  // console.log(values);
+  const objNuevo = {}
+  
+
+  keys.forEach((e, index) => {
+    let key = e.toLowerCase();
+    keys[index] = key
+    objNuevo[key] = e
+    console.log(objNuevo)
+  })
+
+  values.forEach((e, index) => {
+    objNuevo[keys[index]] = e
+  })
+
+  return objNuevo
+
+
+}
+
+console.log(minusculas({ NamE: "Charles", ADDress: "Home Street" }));
+
+
+
+// Ejercicio 10
+// Crea una función que elimine las etiquetas html o xml de un string.
+// La función debe tener un string como único parámetro.
+// Ejemplo de uso de la función:
+// const result = removeHTMLTags('<div><span>lorem</span> <strong>ipsum</strong></div>');
+// console.log(result); // lorem ipsum
+
+function cleanString(string) {
+
+  const regex = /(<([^>]+)>)/gi;
+
+  let result = string.replace(regex, "")
+
+  return result
+}
+
+console.log(
+  cleanString("<div><span>lorem</span> <strong>ipsum</strong></div>")
+);
+
+
+// Ejercicio 11
+// Crea una función que tome un array como parametro y lo divida en arrays nuevos con tantos elementos como sean especificados.
+// La función debe tener dos parámetros:
+// El primer parámetro es el array entero que se quiere dividir.
+// El segundo parámetro es el número de elementos que deben tener los arrays en los que se divida el array original del primer parámetro.
+// Ejemplo de uso de la función:
+// const result = splitArrayIntoChunks([1, 2, 3, 4, 5, 6, 7], 3);
+// console.log(result); // [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7 ] ]
+
+
+
+function divideArray(arr, elementos) {
+
+  newArr = []
+
+  for (let i = 0; i < elementos; i++)
+  { 
+    if (arr.length) {
+      newArr.push(arr.splice(0, elementos));
+    } else {
+      break
+    }
+  }
+  
+  return newArr
+}
+
+console.log(divideArray([1, 2, 3, 4, 5, 6, 7], 4));
