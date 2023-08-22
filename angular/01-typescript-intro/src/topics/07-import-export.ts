@@ -17,5 +17,5 @@ const [total, totalTax] = taxCalculation({
     tax: 0.15
 })
 
-console.log(total)
+console.log(total, totalTax)
 
