@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "usuario": "John Doe",
+      "user": "John Doe",
       "email": "john.due@gmail.com"
     }
   ],
@@ -13,7 +13,8 @@
       "publisher": "DC Comics",
       "alter_ego": "Bruce Wayne",
       "first_appearance": "Detective Comics #27",
-      "characters": "Bruce Wayne"
+      "characters": "Bruce Wayne",
+      "alt_img": null
     },
     {
       "id": "dc-superman",
@@ -166,6 +167,15 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
+    },
+    {
+      "id": "eXv1wbp",
+      "superhero": "Pepe Viyuela",
+      "publisher": "Marvel Comics",
+      "alter_ego": "El Masca",
+      "first_appearance": "Cositas",
+      "characters": "Pepe, Pepón",
+      "alt_img": "https://uh.gsstatic.es/noticias/cultura/2023/05/30/2410711/pepe-viyuela-actua-mallorca-baritono-luis-santana.jpg"
     }
   ]
 }
