@@ -1,0 +1,9 @@
+<div class="m-4 p-2" style="border: 2px solid grey;">
+  <h3>Child Component</h3>
+  <p class="d-flex justify-content-center">Message: {{serviceMessage}}</p>
+  <div class="d-flex justify-content-around">
+    <button (click)="notifyService()" class="btn btn-primary">Use Service</button>
+    <button (click)="useOutput()" class="btn btn-warning">Use Output Property</button>
+    <button class="btn btn-danger">Use Observable</button>
+  </div>
+</div>

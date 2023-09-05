@@ -1,0 +1,13 @@
+<div class="mt-3 p-2" style="border: 2px solid blue;">
+  <h3>Parent Component</h3>
+  <p class="d-flex justify-content-center">Message: {{serviceMessage}}</p>
+  
+
+  <div class="d-flex justify-content-around">
+  <button (click)="notifyService()" class="btn btn-primary">Use Service</button>
+  <button class="btn btn-warning">Use Input Property</button>
+  <button class="btn btn-danger">Use Observable</button>
+  </div>
+
+  <app-child></app-child>
+</div>
