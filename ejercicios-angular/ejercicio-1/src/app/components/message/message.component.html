@@ -1,0 +1,9 @@
+
+<h1 class="mt-3">Ejercicio 1</h1>
+
+<button class="btn btn-primary mt-5" (click)="showMessage()">{{isShown? "Ocultar" : "Mostrar"}}</button>
+
+
+<div *ngIf="isShown" class="d-flex justify-content-center mt-3" style="background-color: salmon; border-radius: 15px;">
+  <h3>Hola Mundo</h3>
+</div>
