@@ -1,0 +1,39 @@
+<div *ngIf="users.length === 0; else table" class="alert alert-warning text-center">
+  No hay usuarios que mostrar
+</div>
+
+
+<ng-template #table>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Nombre de usuario</th>
+        <th>Correo</th>
+        <th>Suscrito</th>
+        <th>País</th>
+        <th>Ciudad</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i = index">
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.hasNotifications}}</td>
+        <td>{{user.country}}</td>
+        <td>{{user.city}}</td>
+        <td>
+          <button (click)="editUser(this.user)" class="btn btn-success">
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-danger">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</ng-template>
