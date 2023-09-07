@@ -25,27 +25,28 @@
         <label class="col-sm-3 col-form-label">Password</label>
         <div class="col-sm-9">
           <input type="password" class="form-control" formControlName="password">
-
         </div>
       </div>
-
+      
       <!-- Password2 -->
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Confirmar contraseña</label>
         <div class="col-sm-9">
           <input type="password" class="form-control" formControlName="password2">
-
+          <span *ngIf="isValidField('password2')" class="form-text text-danger">
+            Las contraseñas deben de ser iguales
+          </span>
         </div>
       </div>
-
-      <div class="row mb-3 form-check form-switch">
-        <label class="col-sm-3 col-form-label form-check-label">Recibir notificaciones</label>
-        <div class="col-sm-9">
-          <input type="checkbox" class="form-check-input" formControlName="hasNotifications">
       
+      <!-- Notificaciones  -->
+      <div class="row mb-3">
+        <label class="sr-only" for="checkbox">Recibir notificaciones</label>
+        <div class="col-sm-9">
+          <input type="checkbox"  formControlName="hasNotifications">
         </div>
       </div>
-
+      
       <!-- País -->
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label">País</label>
@@ -56,27 +57,30 @@
           </select>
         </div>
       </div>
-
-
+      
       <!-- Ciudad -->
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Ciudad</label>
         <div class="col-sm-9">
           <input type="text" class="form-control" formControlName="city">
-
-
         </div>
       </div>
 
-
       <div class="row">
-        <div class="col">
+        <div class="col" *ngIf="!this.currentUser.id; else update">
           <button class="btn btn-primary float-end" type="submit">
             Crear
           </button>
         </div>
+
+        <ng-template class="col" #update>
+          <button (click)="onUpdate()" class="btn btn-primary float-end">
+            Actualizar
+          </button>
+        </ng-template>
       </div>
 
+ 
 
     </form>
   </div>

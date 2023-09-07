@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/interfaces/user.interface';
 import { DataService } from 'src/app/services/data.service';
 
@@ -21,11 +22,15 @@ export class ListComponent implements OnInit{
     this.dataService.getUsers().subscribe(user => this.users = user)
   }
 
-  editUser(user: User) {
-    this.dataService.editUser(user)
+  onButtonClick(user: User) {
+    this.dataService.setUser(user)
   }
+ 
 
-
-  // TODO: que se rellene el form con la info del usuario para editar 
+  deleteUser(user: User) {
+    this.dataService.deleteUser(user).subscribe()
+    console.log(user)
+    window.location.reload()
+  }
 
 }

@@ -23,12 +23,12 @@
         <td>{{user.country}}</td>
         <td>{{user.city}}</td>
         <td>
-          <button (click)="editUser(this.user)" class="btn btn-success">
+          <button (click)="onButtonClick(this.user)" class="btn btn-success">
             <i class="bi bi-pencil-fill"></i>
           </button>
         </td>
         <td>
-          <button class="btn btn-danger">
+          <button (click)="deleteUser(this.user)" class="btn btn-danger">
             <i class="bi bi-trash-fill"></i>
           </button>
         </td>

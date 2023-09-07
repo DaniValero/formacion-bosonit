@@ -2,41 +2,23 @@
   "users": [
     {
       "id": 1,
-      "username": "Dani",
-      "password": "1234",
-      "email": "dani@mail.com",
-      "hasNotifications": true,
-      "country": "Spain",
-      "city": "Sevilla"
-    },
-    {
-      "id": 2,
-      "username": "Pepe",
-      "password": "1234",
-      "email": "pepe@mail.com",
-      "hasNotifications": true,
-      "country": "Spain",
-      "city": "Cuenca"
-    },
-    {
-      "id": 3,
-      "username": "Ismael",
-      "email": "isma@gmail.com",
-      "password": "1234",
-      "password2": "1234",
-      "hasNotifications": false,
-      "country": "Portugal",
-      "city": "Madeira"
-    },
-    {
-      "id": 4,
-      "username": "El Bicho",
+      "username": "Serresiete",
       "email": "cr7@mail.com",
       "password": "777",
       "password2": "777",
       "hasNotifications": false,
       "country": "Portugal",
       "city": "SIUUUUUUUUUU"
+    },
+    {
+      "id": 7,
+      "username": "juan",
+      "email": "juan@mail.com",
+      "password": "123",
+      "password2": "123",
+      "hasNotifications": "",
+      "country": "Vatican City",
+      "city": "eqweqw"
     }
   ]
 }
