@@ -1,0 +1,20 @@
+<h1 style="text-align: center;" class="mt-3">Search on type</h1>
+
+<div class="row">
+  <div class="col">
+    <button 
+    *ngFor="let country of countries" 
+    class="btn" 
+    (click)="searchUniversitiesByCountry(country)"
+    [ngClass]="{'btn-outline-primary': selectedCountry === country}">
+    {{country}}
+    </button>
+    <app-search-bar (onDebounce)="searchUniversitiesByName($event)"></app-search-bar>
+  </div>
+</div>
+
+<app-list [universities]="universities" [searchTerm]="searchTerm"></app-list>
+
+
+
+
