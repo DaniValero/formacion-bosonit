@@ -1,12 +1,11 @@
 <div class="mt-3">
   <h5>Controlador:</h5>
 
-  <select name="" id="">
-    <option value="red">Rojo</option>
-    <option value="yellow">Amarillo</option>
-    <option value="green">Verde</option>
+  
+  <select (change)="onSelect($event)">
+    <option *ngFor="let color of colors" [value]="color">{{color}}</option>
   </select>
 
   <input type="checkbox"  (click)="onToggle()" class="m-3">
-  <label for="checkbox" >Encendido/Apagado</label>
+  <label for="checkbox">Encendido/Apagado</label>
 </div>

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './pages/main/main.component';
 import { TrafficLightComponent } from './components/traffic-light/traffic-light.component';
 import { ControllerComponent } from './components/controller/controller.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ControllerComponent } from './components/controller/controller.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

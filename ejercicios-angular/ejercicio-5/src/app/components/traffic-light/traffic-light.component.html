@@ -1,6 +1,6 @@
 <div class="traffic-light">
-  <div class="light-off"></div>
-  <div class="light-off"></div>
-  <div class="light-off"></div>
+  <div [ngClass]="currentColor === 'red' ? 'red-light' : 'light-off'"></div>
+  <div [ngClass]="currentColor === 'yellow' ? 'yellow-light' : 'light-off'"></div>
+  <div [ngClass]="currentColor === 'green' ? 'green-light' : 'light-off'"></div>
 </div>
 
