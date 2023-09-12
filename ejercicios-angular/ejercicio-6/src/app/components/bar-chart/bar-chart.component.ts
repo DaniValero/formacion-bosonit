@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { CountryData } from 'src/app/interfaces/data.interface';
 import { DataService } from 'src/app/services/data.service';
 
 
@@ -11,12 +12,27 @@ import { DataService } from 'src/app/services/data.service';
 export class BarChartComponent implements OnInit{
   public labels: string[] = []
 
+  public casesPerOneMillion: number[] = []
+  public recoveredPerOneMillion: number[] = []
+
   constructor(private dataService: DataService) { 
 
   }
   ngOnInit(): void {
-    this.dataService.getLastDaysInfo().subscribe((data) => {
-      // console.log(data);
+    this.dataService.getCountriesInfo().subscribe((data) => {
+
+      const cleanData = data
+      
+      cleanData.forEach((e: CountryData) => {
+        this.casesPerOneMillion.push(e.casesPerOneMillion);
+        this.recoveredPerOneMillion.push(e.recoveredPerOneMillion)
+      });
+      
+      
+      this.barChartData.datasets[0].data = this.casesPerOneMillion
+      this.barChartData.datasets[1].data = this.recoveredPerOneMillion
+
+      this.chart?.update()
     });
   }
 
@@ -30,7 +46,8 @@ export class BarChartComponent implements OnInit{
     scales: {
       x: {},
       y: {
-        min: 10,
+        min: 100000,
+        max: 800000
       },
     },
     plugins: {
@@ -43,46 +60,10 @@ export class BarChartComponent implements OnInit{
 
 
   public barChartData: ChartData<'bar'> = {
-    labels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
+    labels: ['Spain', 'Ukraine', 'Italy', 'Greece', 'UK', 'Austria'],
     datasets: [
-      { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-      { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
+      { data: [], label: 'Cases per million' },
+      { data: [], label: 'Recovered per million' },
     ],
   };
-
-  // events
-  public chartClicked({
-    event,
-    active,
-  }: {
-    event?: ChartEvent;
-    active?: object[];
-  }): void {
-    console.log(event, active);
-  }
-
-  public chartHovered({
-    event,
-    active,
-  }: {
-    event?: ChartEvent;
-    active?: object[];
-  }): void {
-    console.log(event, active);
-  }
-
-  public randomize(): void {
-    // Only Change 3 values
-    this.barChartData.datasets[0].data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      Math.round(Math.random() * 100),
-      56,
-      Math.round(Math.random() * 100),
-      40,
-    ];
-
-    this.chart?.update();
-  }
 }

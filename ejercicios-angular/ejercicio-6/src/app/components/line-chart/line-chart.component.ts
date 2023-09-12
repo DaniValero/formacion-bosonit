@@ -19,11 +19,11 @@ export class LineChartComponent implements OnInit {
     this.dataService.getLastDaysInfo().subscribe((data) => {
       const cleanData = Object.entries(Object.entries(data)[0][1]).slice(-10);
       const cleanData2 = Object.entries(Object.entries(data)[1][1]).slice(-10);
+
       cleanData.forEach((e) => {
         this.last10DaysCases?.push(e[1] as number);
         this.lineChartData.datasets[0].data.push(e[1] as number);
         this.last10daysLabels?.push(e[0]);
-
         this.lineChartData.datasets[1].data.push();
       });
 
@@ -40,7 +40,7 @@ export class LineChartComponent implements OnInit {
     datasets: [
       {
         data: [],
-        label: 'Cases in Europe (total to date)',
+        label: 'COVID Cases (total to date)',
         backgroundColor: 'rgba(148,159,177,0.2)',
         borderColor: 'rgba(148,159,177,1)',
         pointBackgroundColor: 'rgba(148,159,177,1)',
