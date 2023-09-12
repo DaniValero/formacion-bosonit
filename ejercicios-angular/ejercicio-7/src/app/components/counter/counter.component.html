@@ -1,0 +1,20 @@
+<h2 style="font-size: 3rem;">{{value}}</h2>
+
+<p class="mt-3">Setup</p>
+<div class="btn-group me-2" role="group">
+<button class="btn btn-primary" (click)="onStart(value)">Start</button>
+<button class="btn btn-primary" (click)="onPause(value)">Pause</button>
+<button class="btn btn-primary" (click)="onReset()">Reset</button>
+</div>
+
+<p class="mt-3">Count</p>
+<div class="btn-group me-2" role="group">
+<button class="btn btn-primary" (click)="onCountUp(value)">Count Up</button>
+<button class="btn btn-primary" (click)="onCountDown(value)">Count Down</button>
+</div>
+
+
+<p class="mt-3">Set to</p>
+<input type="number" (change)="setValue($event, value)" value="0">
+<p class="mt-3">Step</p>
+<input type="number" (change)="setStep($event, value)" value="1">
