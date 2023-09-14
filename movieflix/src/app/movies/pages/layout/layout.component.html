@@ -1,0 +1,27 @@
+<div class="container">
+
+  <div class="top-bar">
+    <p-toolbar>
+      <div class="top-bar-content">
+        <!-- Move the button to the right -->
+        <div class="top-bar-button">
+          <p-button label="Login"></p-button>
+        </div>
+        <!-- Add a search box or other content here as needed -->
+      </div>
+    </p-toolbar>
+  </div>
+
+  <div class="layout">
+    
+    <div class="sidebar">
+      <p-menu [model]="menuItems" class="menuitems"></p-menu>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>

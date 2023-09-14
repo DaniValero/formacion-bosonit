@@ -1,0 +1,11 @@
+<h2 style="text-align: center;">Most popular movies</h2>
+
+<div class="container">
+  
+  <p-card class="card" *ngFor="let movie of movies">
+    <h5 class="movie-title">{{ movie.title }}</h5>
+    <img  class="movie-poster" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" [alt]="movie.title">
+    <p  class="card-body">Rating: {{movie.vote_average}}</p>
+  </p-card>
+
+</div>
