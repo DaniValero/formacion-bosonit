@@ -1,0 +1,10 @@
+<div class="container">
+
+  <p-card class="card" *ngFor="let movie of movies"  (click)="onCardClick(movie.id)">
+
+    <h5 class="movie-title">{{ movie.title }}</h5>
+    <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" [alt]="movie.title">
+    <p class="card-body">Rating: {{movie.vote_average}}</p>
+  </p-card>
+
+</div>

@@ -9,6 +9,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { SidebarModule } from 'primeng/sidebar';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { CardModule } from 'primeng/card';
+import { ChipModule } from 'primeng/chip';
 
 @NgModule({
   exports: [
@@ -21,7 +22,7 @@ import { CardModule } from 'primeng/card';
     SidebarModule,
     ScrollPanelModule,
     CardModule,
-
+    ChipModule
 
   ],
 })

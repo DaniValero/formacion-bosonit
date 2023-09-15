@@ -1,21 +1,27 @@
-<div class="container">
+<div class="top-bar">
+  <p-toolbar>  
+      <h4>Movieflix</h4>
+      <shared-search-box (onDebounce)="searchMovie($event)" placeholder="Search movies..."></shared-search-box>
 
-  <div class="top-bar">
-    <p-toolbar>
-      <div class="top-bar-content">
-        <!-- Move the button to the right -->
-        <div class="top-bar-button">
-          <p-button label="Login"></p-button>
-        </div>
-        <!-- Add a search box or other content here as needed -->
+      <div class="p-toolbar-group-right">
+        <p-button label="Home"><i class="bi bi-house-fill"></i> </p-button>
       </div>
-    </p-toolbar>
-  </div>
+  </p-toolbar>
+</div>
+
+<div class="container">
 
   <div class="layout">
     
-    <div class="sidebar">
-      <p-menu [model]="menuItems" class="menuitems"></p-menu>
+    <div class="sidebar mt-3">
+      <p-menu [model]="menuItems" class="menuitems">
+        <ng-template let-item pTemplate="item">
+          <a [routerLink]="item.routerLink" routerLinkActive="active">
+            <i class="pi {{ item.icon }}"></i>
+            {{ item.label }}
+          </a>
+        </ng-template>
+      </p-menu>
     </div>
 
     <!-- Content Area -->

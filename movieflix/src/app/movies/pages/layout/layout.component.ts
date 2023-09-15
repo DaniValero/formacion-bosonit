@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -6,14 +6,23 @@ import { MenuItem } from 'primeng/api';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.scss'],
 })
-export class LayoutComponent {
+export class LayoutComponent implements OnInit {
+
   menuItems: MenuItem[] = [];
-  sidebarVisible: boolean = true;
+
   constructor() {
-    this.menuItems = [
-      { label: 'Item1' },
-      { label: 'item2' },
-      { label: 'item3' },
-    ];
+  
+  }
+  ngOnInit(): void {
+      this.menuItems = [
+        { label: 'Most Popular', routerLink: ['/'] },
+        { label: 'Latest', routerLink: ['/latest'] },
+        { label: 'By Genre', routerLink: ['/genre'] },
+      ];
+  }
+
+
+  searchMovie(searchTerm: string) {
+
   }
 }

@@ -27,4 +27,12 @@ export class MoviesService {
     );
   }
 
+  getMovieById(id: number): Observable<Movie> {
+    const headers = this.getHeaders()
+    return this.http.get<Movie>(
+      `${this.apiUrl}/movie/${id}`, {headers}
+    )
+  }
+
+
 }
