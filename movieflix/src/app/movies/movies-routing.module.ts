@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './pages/layout/layout.component';
-import { ByNamePage } from './pages/by-name-page/by-name-page.component';
 import { MoviePageComponent } from './pages/movie-page/movie-page.component';
+import { NowPlayingPageComponent } from './pages/now-playing-page/now-playing-page/now-playing-page.component';
+import { TopRatedPageComponent } from './pages/top-rated-page/top-rated-page/top-rated-page.component';
+import { MostPopularPage } from './pages/most-popular-page/most-popular-page.component';
 
 const routes: Routes = [
   {
@@ -11,11 +13,19 @@ const routes: Routes = [
     children: [
       {
         path: 'popular',
-        component: ByNamePage,
+        component: MostPopularPage,
       },
       {
-        path: "movie/:id",
-        component: MoviePageComponent
+        path: 'top',
+        component: TopRatedPageComponent,
+      },
+      {
+        path: 'now-playing',
+        component: NowPlayingPageComponent,
+      },
+      {
+        path: 'movie/:id',
+        component: MoviePageComponent,
       },
       {
         path: '**',

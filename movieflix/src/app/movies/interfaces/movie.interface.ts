@@ -10,7 +10,7 @@ export interface Result {
 export interface Movie {
   adult:             boolean;
   backdrop_path:     string;
-  genres: Genre[];
+  genres:            Genre[];
   id:                number;
   original_language: OriginalLanguage;
   original_title:    string;
@@ -34,3 +34,8 @@ export enum OriginalLanguage {
   En = "en",
   Hi = "hi",
 }
+
+export interface Genres {
+  genres: Genre[];
+}
+

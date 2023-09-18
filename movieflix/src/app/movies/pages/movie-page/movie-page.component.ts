@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { forkJoin, switchMap } from 'rxjs';
 import { Genre, Movie } from '../../interfaces/movie.interface';
+import { VideoResult, Trailer } from '../../interfaces/video.interface';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Cast, CastElement } from '../../interfaces/cast.interface';
 
 @Component({
   selector: 'movie-page',
@@ -13,27 +16,45 @@ export class MoviePageComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private moviesService: MoviesService,
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {}
 
-  public movie?: Movie
-  public genres?: Genre[]
+  public movie?: Movie;
+  public genres?: Genre[];
+  public trailer?: VideoResult[];
+  public cast?: CastElement[]
 
   ngOnInit(): void {
     this.activatedRoute.params
       .pipe(
-        
-        switchMap(({ id }) =>
-          this.moviesService.getMovieById(id)
-        )
+        switchMap(({ id }) => {
+          return forkJoin([
+            this.moviesService.getMovieById(id),
+            this.moviesService.getMovieTrailer(id),
+            this.moviesService.getCastMembers(id)
+          ]);
+        })
       )
-      .subscribe((movie) => {
-        if (!movie) return this.router.navigateByUrl('');
-        this.movie = movie
-        this.genres = movie.genres
-        console.log(movie)
-        return
-      });
-    
+      .subscribe(([movie, videos, cast]: [Movie, Trailer, Cast]) => {
+        if (!movie) {
+          this.router.navigateByUrl('');
+          return;
+        }
+
+        this.movie = movie;
+        this.genres = movie.genres;
+
+        this.trailer = videos.results.filter(
+          (video) => video.type === 'Trailer'
+        );
+
+        this.cast = cast.cast.slice(0, 16)
+      })
+  }
+
+  getTrailerUrl(key: string): SafeResourceUrl {
+    const url = `https://www.youtube.com/embed/${key}`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

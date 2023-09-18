@@ -3,11 +3,11 @@ import { MoviesService } from 'src/app/movies/services/movies.service';
 import { Movie } from '../../interfaces/movie.interface';
 
 @Component({
-  selector: 'by-name-page',
-  templateUrl: './by-name-page.component.html',
-  styleUrls: ['./by-name-page.scss'],
+  selector: 'most-popular-page',
+  templateUrl: './most-popular-page.component.html',
+  styleUrls: ['./most-popular-page.scss'],
 })
-export class ByNamePage implements OnInit {
+export class MostPopularPage implements OnInit {
   public movies: Movie[] = [];
 
   constructor(private movieService: MoviesService) {}
@@ -19,6 +19,6 @@ export class ByNamePage implements OnInit {
   }
 
   searchMovie(title: string) {
-
+    
   }
 }

@@ -1,20 +1,38 @@
 <div *ngIf="movie" class="flex flex-column container">
   <h1>{{movie.title}}</h1>
   <div class="mb-2">
-  <p-chip *ngFor="let genre of genres">{{ genre.name }}</p-chip>
+  <p-chip class="mr-2" *ngFor="let genre of genres">{{ genre.name }}</p-chip>
   </div>
 
+  
   <div class="flex justify-content-between">
-  <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" [alt]="movie.title">
-  <div class="p-3">{{movie.overview}}
+    <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" [alt]="movie.title">
+    
+    <div class="p-3" *ngIf="trailer">
+      <div class="p-3">{{movie.overview}}
+      <p class="text-center mt-5">"{{movie.tagline}}"</p>
+      </div>
 
-    <p class="text-center mt-5">"{{movie.tagline}}"</p>
-
+      <div class="flex flex-column align-items-center">
+        <h3>Watch trailer</h3>
+        <iframe width="560" height="315" [src]="getTrailerUrl(trailer[0].key)" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
   </div>
 
+  
+  <div class="mt-5">
+    <h3>Cast</h3>
+    <div class="flex flex-wrap justify-content-around">
+      <div class="card" *ngFor="let actor of cast">
+        <img src="https://image.tmdb.org/t/p/w500{{actor.profile_path}}" alt="{{actor.name}}">
+        <div class="card-body">
+          <p> <strong>{{actor.name}}</strong> as <em>{{actor.character}}</em></p>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <h3>Cast:</h3>
+  
 
 
 </div>

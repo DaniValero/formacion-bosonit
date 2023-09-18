@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -10,19 +11,22 @@ export class LayoutComponent implements OnInit {
 
   menuItems: MenuItem[] = [];
 
-  constructor() {
+  constructor(private router: Router) {
   
   }
   ngOnInit(): void {
       this.menuItems = [
         { label: 'Most Popular', routerLink: ['/'] },
-        { label: 'Latest', routerLink: ['/latest'] },
-        { label: 'By Genre', routerLink: ['/genre'] },
+        { label: 'Top Rated', routerLink: ['/movies/top'] },
+        { label: 'Now Playing', routerLink: ['/movies/now-playing'] },
       ];
   }
 
+  navigateHome() {
+    this.router.navigate(['/'])
+  }
 
   searchMovie(searchTerm: string) {
-
+    
   }
 }

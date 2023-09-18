@@ -4,7 +4,10 @@
 
     <h5 class="movie-title">{{ movie.title }}</h5>
     <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" [alt]="movie.title">
-    <p class="card-body">Rating: {{movie.vote_average}}</p>
+    <div class="card-body">
+      <p>Rating: {{movie.vote_average}}</p>
+      <p>Year: {{movie.release_date.slice(0, 4)}}</p>
+    </div>
   </p-card>
 
 </div>

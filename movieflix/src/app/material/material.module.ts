@@ -10,6 +10,8 @@ import { SidebarModule } from 'primeng/sidebar';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { CardModule } from 'primeng/card';
 import { ChipModule } from 'primeng/chip';
+import { CascadeSelectModule } from 'primeng/cascadeselect';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   exports: [
@@ -22,7 +24,9 @@ import { ChipModule } from 'primeng/chip';
     SidebarModule,
     ScrollPanelModule,
     CardModule,
-    ChipModule
+    ChipModule,
+    DropdownModule,
+    CascadeSelectModule
 
   ],
 })
