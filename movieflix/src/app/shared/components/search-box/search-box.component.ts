@@ -13,21 +13,19 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
   private debouncerSubscription?: Subscription;
   public searchOption: string = 'name';
   public genres?: Genre[] = []
-  public genre?: string = "Action"
+  public genre?: string = ""
 
   constructor(private moviesService: MoviesService) {}
 
   @Input()
   public placeholder: string = '';
 
-  @Input()
-  public initialValue: string = '';
-
   @Output()
   public onValue = new EventEmitter<string>();
 
   @Output()
   public onDebounce = new EventEmitter<string>();
+
 
   ngOnInit(): void {
     this.debouncer.pipe(debounceTime(300)).subscribe((value) => {
@@ -53,8 +51,8 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
     this.searchOption = (selectedOption.target as HTMLInputElement).value
   }
 
-  setGenre(selectedGenre: Event) {
-    this.genre = (selectedGenre.target as HTMLInputElement).value;
+  setGenre(event: Event) {
+    this.moviesService.updateGenre((event.target as HTMLInputElement).value)
   }
 
   

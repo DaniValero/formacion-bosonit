@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 
+
 @Component({
   selector: 'movies-layout',
   templateUrl: './layout.component.html',
@@ -9,9 +10,11 @@ import { MenuItem } from 'primeng/api';
 })
 export class LayoutComponent implements OnInit {
 
-  menuItems: MenuItem[] = [];
+  public menuItems: MenuItem[] = [];
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+  ) {
   
   }
   ngOnInit(): void {
@@ -27,6 +30,7 @@ export class LayoutComponent implements OnInit {
   }
 
   searchMovie(searchTerm: string) {
-    
+    this.router.navigate([`/movies/search/${searchTerm}`])
   }
+
 }

@@ -10,6 +10,7 @@ import { MoviePageComponent } from './pages/movie-page/movie-page.component';
 import { TopRatedPageComponent } from './pages/top-rated-page/top-rated-page/top-rated-page.component';
 import { NowPlayingPageComponent } from './pages/now-playing-page/now-playing-page/now-playing-page.component';
 import { MostPopularPage } from './pages/most-popular-page/most-popular-page.component';
+import { SearchResultsPageComponent } from './pages/search-results-page/search-results-page/search-results-page.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MostPopularPage } from './pages/most-popular-page/most-popular-page.com
     MoviePageComponent,
     TopRatedPageComponent,
     NowPlayingPageComponent,
+    SearchResultsPageComponent,
   ],
   imports: [CommonModule, MoviesRoutingModule, MaterialModule, SharedModule],
 })

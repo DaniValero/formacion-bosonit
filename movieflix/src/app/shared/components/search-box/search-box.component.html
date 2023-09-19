@@ -5,7 +5,8 @@
 </select>
 
 <ng-container *ngIf="searchOption === 'genre'">
-  <select name="genre" id="genre">
-    <option *ngFor="let genre of genres" value="{{genre.name}}" (change)="setGenre($event)">{{genre.name}}</option>
+  <select name="genre" id="genre" (change)="setGenre($event)">
+    <option value="null"> --Select a Genre -- </option>
+    <option *ngFor="let genre of genres" value="{{genre.name}}" >{{genre.name}}</option>
   </select>
 </ng-container>

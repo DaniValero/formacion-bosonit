@@ -1,6 +1,7 @@
-import { Component, Input} from '@angular/core';
-import { Movie } from '../../interfaces/movie.interface';
+import { AfterContentChecked, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Genre, Movie } from '../../interfaces/movie.interface';
 import { Router } from '@angular/router';
+import { MoviesService } from '../../services/movies.service';
 
 @Component({
   selector: 'movie-list',
@@ -8,18 +9,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./movie-list.component.scss']
 })
   
-  
-export class MovieListComponent {
+export class MovieListComponent implements OnInit{
 
-  constructor(private router: Router) {
+
+  constructor(
+    private router: Router,
+    private moviesService: MoviesService
+  ) { }
+ 
+
+  ngOnInit(): void {
+    this.moviesService.genre$.subscribe((newGenre) => {
+      this.genre = newGenre;
+      console.log(this.genre)
+    });
   }
-
+  
   @Input()
   public movies: Movie[] = []
 
+  public genre: string = ""
+  
   onCardClick(id: number) {
     this.router.navigate(['movies/movie', id]);
   }
+
+
+
 
 
 }
