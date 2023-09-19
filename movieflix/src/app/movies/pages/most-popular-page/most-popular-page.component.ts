@@ -14,6 +14,9 @@ export class MostPopularPage implements OnInit {
   ngOnInit(): void {
     this.movieService
       .getAllMovies()
-      .subscribe((response) => (this.movies = response.results));
+      .subscribe((response) => {
+        this.movies = response.results
+        console.log(this.movies)
+      });
   }
 }

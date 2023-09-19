@@ -1,6 +1,6 @@
-<div class="container" *ngIf="movies.length;else noMovies">
+<div class="container" *ngIf="filteredMovies!.length > 0">
 
-  <p-card class="card" *ngFor="let movie of movies"  (click)="onCardClick(movie.id)">
+  <p-card class="card" *ngFor="let movie of filteredMovies" (click)="onCardClick(movie.id)">
 
     <h5 class="movie-title">{{ movie.title }}</h5>
     <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" [alt]="movie.title">
@@ -12,7 +12,20 @@
 
 </div>
 
+<div class="container" *ngIf="filteredMovies!.length === 0 && movies.length > 0">
 
-<ng-template #noMovies class="flex">
+  <p-card class="card" *ngFor="let movie of movies" (click)="onCardClick(movie.id)">
+
+    <h5 class="movie-title">{{ movie.title }}</h5>
+    <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" [alt]="movie.title">
+    <div class="card-body">
+      <p>Rating: {{movie.vote_average}}</p>
+      <p>Year: {{movie.release_date.slice(0, 4)}}</p>
+    </div>
+  </p-card>
+
+</div>
+
+<ng-template *ngIf="movies.length === 0 && filteredMovies!.length === 0" class="flex">
   <h3 class="text-center">No movies found</h3>
 </ng-template>

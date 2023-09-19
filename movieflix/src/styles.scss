@@ -12,3 +12,16 @@ background: rgb(7, 41, 82);
   background-color: var(--highlight-bg);
   border: none;
 }
+
+select {
+  background-color: var(--highlight-bg);
+  color: rgb(224, 224, 224);
+  border: none;
+  border-radius: 15px;
+  padding: 5px
+}
+
+option {
+  background-color: var(--highlight-bg);
+  color: rgb(0, 0, 0);
+}

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { Genres, Movie, Result } from '../interfaces/movie.interface';
+import { Genre, Genres, Movie, Result } from '../interfaces/movie.interface';
 import { environments } from 'src/environments/environments';
 import { Trailer } from '../interfaces/video.interface';
 import { Cast } from '../interfaces/cast.interface';
@@ -11,9 +11,8 @@ import { Cast } from '../interfaces/cast.interface';
 })
 export class MoviesService {
   private apiUrl: string = 'https://api.themoviedb.org/3';
-  public genre: string = '';
-  private genreSubject = new Subject<string>;
-  genre$: Observable<string> = this.genreSubject.asObservable();
+  private genreSubject = new Subject<Genre>;
+  genre$: Observable<Genre> = this.genreSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -28,9 +27,7 @@ export class MoviesService {
   getAllMovies(): Observable<Result> {
     const headers = this.getHeaders();
     return this.http.get<Result>(
-      `${this.apiUrl}/movie/popular?language=en-US&page=1`,
-      { headers }
-    );
+      `${this.apiUrl}/movie/popular?language=en-US&page=1`,{ headers });
   }
 
   getAllGenres(): Observable<Genres> {
@@ -65,12 +62,10 @@ export class MoviesService {
 
   searchMoviesByName(name: string): Observable<Result> {
     const headers = this.getHeaders();
-    return this.http.get<Result>(`${this.apiUrl}/search/movie?query=${name}`, {
-      headers,
-    });
+    return this.http.get<Result>(`${this.apiUrl}/search/movie?query=${name}`, {headers});
   }
   
-  updateGenre(newGenre: string) {
+  updateGenre(newGenre: Genre) {
     this.genreSubject.next(newGenre);
   }
 }

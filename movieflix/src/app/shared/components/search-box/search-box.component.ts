@@ -13,7 +13,6 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
   private debouncerSubscription?: Subscription;
   public searchOption: string = 'name';
   public genres?: Genre[] = []
-  public genre?: string = ""
 
   constructor(private moviesService: MoviesService) {}
 
@@ -52,7 +51,12 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
   }
 
   setGenre(event: Event) {
-    this.moviesService.updateGenre((event.target as HTMLInputElement).value)
+
+    const selectedGenre = (event.target as HTMLInputElement).value
+
+    if ( selectedGenre === "null") return
+    const newGenre = this.genres?.find((genre) => genre.id === parseInt(selectedGenre))
+    this.moviesService.updateGenre(newGenre!)
   }
 
   
