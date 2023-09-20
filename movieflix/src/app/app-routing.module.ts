@@ -4,7 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'movies',
-    loadChildren: () => import('./movies/movies.module').then((m) => m.MoviesModule),
+    loadChildren: () =>
+      import('./movies/movies.module').then((m) => m.MoviesModule),
+  },
+  {
+    path: 'series',
+    loadChildren: () =>
+      import('./series/series.module').then((m) => m.SeriesModule),
   },
   {
     path: '',
@@ -15,6 +21,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

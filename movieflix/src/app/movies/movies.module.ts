@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MoviesRoutingModule } from './movies-routing.module';
-import { LayoutComponent } from './pages/layout/layout.component';
 import { MaterialModule } from '../material/material.module';
-import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { CardListComponent } from '../shared/components/card-list/card-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { MoviePageComponent } from './pages/movie-page/movie-page.component';
 import { TopRatedPageComponent } from './pages/top-rated-page/top-rated-page/top-rated-page.component';
@@ -14,9 +13,8 @@ import { SearchResultsPageComponent } from './pages/search-results-page/search-r
 
 @NgModule({
   declarations: [
-    LayoutComponent,
     MostPopularPage,
-    MovieListComponent,
+    CardListComponent,
     MoviePageComponent,
     TopRatedPageComponent,
     NowPlayingPageComponent,

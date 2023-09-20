@@ -1,0 +1,52 @@
+<div class="top-bar" >
+  <p-toolbar>  
+      <h3><i class="bi bi-film"></i> Movieflix</h3>
+      <shared-search-box (onDebounce)="searchMovie($event)" placeholder="Search..."></shared-search-box>
+
+      <div class="p-toolbar-group-right">
+        <p-button label="Home" (click)="navigateHome()"><i class="bi bi-house-fill"></i> </p-button>
+      </div>
+  </p-toolbar>
+</div>
+
+<div class="container" >
+
+  <div class="layout">
+    
+    <div class="sidebar mt-auto">
+      <div class="menu-title">
+        <h3>Movies</h3>
+      </div>
+      <hr>
+      <p-menu [model]="movieItems" class="menuitems">
+        <ng-template let-item pTemplate="item">
+          <a [routerLink]="item.routerLink" routerLinkActive="active">
+            <i class="bi {{ item.icon }}"></i>
+            {{ item.label }}
+          </a>
+        </ng-template>
+      </p-menu>
+    </div>
+
+    <div class="sidebar" style="margin-top: 200px;">
+      <div class="menu-title">
+        <h3>Series</h3>
+      </div>
+      <hr>
+      <p-menu [model]="seriesItems" class="menuitems">
+        <ng-template let-item pTemplate="item">
+          <a [routerLink]="item.routerLink" routerLinkActive="active" (click)="onMenuItemClick(item)">
+            <i class="bi {{ item.icon }}"></i>
+            {{ item.label }}
+          </a>
+        </ng-template>
+      </p-menu>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>

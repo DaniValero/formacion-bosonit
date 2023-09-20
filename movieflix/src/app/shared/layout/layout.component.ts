@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
-import { MoviesService } from '../../services/movies.service';
-
 
 @Component({
-  selector: 'movies-layout',
+  selector: 'main-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.scss'],
 })
-export class LayoutComponent implements OnInit {;
-
-  public menuItems: MenuItem[] = [];
+export class LayoutComponent implements OnInit {
+  public movieItems: MenuItem[] = [];
+  public seriesItems: MenuItem[] = [];
 
   constructor(private router: Router) {}
   ngOnInit(): void {
-    this.menuItems = [
+    this.movieItems = [
       {
         label: 'Most Popular',
         routerLink: ['/'],
@@ -32,6 +30,19 @@ export class LayoutComponent implements OnInit {;
         icon: 'bi-ticket-perforated-fill',
       },
     ];
+
+    this.seriesItems = [
+      {
+        label: 'Most Popular',
+        routerLink: ['/series/popular'],
+        icon: 'bi-fire',
+      },
+      {
+        label: 'Top Rated',
+        routerLink: ['/series/top'],
+        icon: 'bi-trophy-fill',
+      },
+    ];
   }
 
   navigateHome() {
@@ -40,5 +51,9 @@ export class LayoutComponent implements OnInit {;
 
   searchMovie(searchTerm: string) {
     this.router.navigate([`/movies/search/${searchTerm}`]);
+  }
+
+  onMenuItemClick(item: MenuItem) {
+    console.log(`Clicked on menu item: ${item.label}`);
   }
 }

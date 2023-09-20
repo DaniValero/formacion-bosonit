@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
-  declarations: [SearchBoxComponent],
+  declarations: [SearchBoxComponent, LayoutComponent, ],
   imports: [CommonModule, RouterModule, MaterialModule],
-  exports: [SearchBoxComponent],
+  exports: [SearchBoxComponent, LayoutComponent],
 })
 export class SharedModule {}

@@ -1,6 +1,6 @@
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './pages/layout/layout.component';
+import { LayoutComponent } from '../shared/layout/layout.component';
 import { MoviePageComponent } from './pages/movie-page/movie-page.component';
 import { NowPlayingPageComponent } from './pages/now-playing-page/now-playing-page/now-playing-page.component';
 import { TopRatedPageComponent } from './pages/top-rated-page/top-rated-page/top-rated-page.component';
