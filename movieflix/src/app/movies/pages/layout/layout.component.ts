@@ -9,21 +9,29 @@ import { MoviesService } from '../../services/movies.service';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.scss'],
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent implements OnInit {;
 
   public menuItems: MenuItem[] = [];
 
-  constructor(
-    private router: Router,
-  ) {
-  
-  }
+  constructor(private router: Router) {}
   ngOnInit(): void {
-      this.menuItems = [
-        { label: 'Most Popular', routerLink: ['/'] },
-        { label: 'Top Rated', routerLink: ['/movies/top'] },
-        { label: 'Now Playing', routerLink: ['/movies/now-playing'] },
-      ];
+    this.menuItems = [
+      {
+        label: 'Most Popular',
+        routerLink: ['/'],
+        icon: 'bi-fire',
+      },
+      {
+        label: 'Top Rated',
+        routerLink: ['/movies/top'],
+        icon: 'bi-trophy-fill',
+      },
+      {
+        label: 'Now Playing',
+        routerLink: ['/movies/now-playing'],
+        icon: 'bi-ticket-perforated-fill',
+      },
+    ];
   }
 
   navigateHome() {
@@ -31,7 +39,6 @@ export class LayoutComponent implements OnInit {
   }
 
   searchMovie(searchTerm: string) {
-    this.router.navigate([`/movies/search/${searchTerm}`])
+    this.router.navigate([`/movies/search/${searchTerm}`]);
   }
-
 }

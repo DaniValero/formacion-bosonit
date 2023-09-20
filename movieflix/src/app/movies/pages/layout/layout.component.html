@@ -1,6 +1,6 @@
-<div class="top-bar">
+<div class="top-bar" >
   <p-toolbar>  
-      <h2><i class="bi bi-film"></i> Movieflix</h2>
+      <h3><i class="bi bi-film"></i> Movieflix</h3>
       <shared-search-box (onDebounce)="searchMovie($event)" placeholder="Search movies..."></shared-search-box>
 
       <div class="p-toolbar-group-right">
@@ -9,7 +9,7 @@
   </p-toolbar>
 </div>
 
-<div class="container">
+<div class="container" >
 
   <div class="layout">
     
@@ -17,7 +17,7 @@
       <p-menu [model]="menuItems" class="menuitems">
         <ng-template let-item pTemplate="item">
           <a [routerLink]="item.routerLink" routerLinkActive="active">
-            <i class="pi {{ item.icon }}"></i>
+            <i class="bi {{ item.icon }}"></i>
             {{ item.label }}
           </a>
         </ng-template>
