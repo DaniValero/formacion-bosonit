@@ -10,8 +10,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { CardModule } from 'primeng/card';
 import { ChipModule } from 'primeng/chip';
-import { CascadeSelectModule } from 'primeng/cascadeselect';
-import { DropdownModule } from 'primeng/dropdown';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   exports: [
@@ -25,9 +24,7 @@ import { DropdownModule } from 'primeng/dropdown';
     ScrollPanelModule,
     CardModule,
     ChipModule,
-    DropdownModule,
-    CascadeSelectModule
-
+    PaginatorModule,
   ],
 })
 export class MaterialModule {}

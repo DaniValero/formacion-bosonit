@@ -10,6 +10,7 @@
     </div>
   </p-card>
 
+
 </div>
 
 <div class="container" *ngIf="filteredMovies!.length === 0 && movies.length > 0">
@@ -24,8 +25,11 @@
     </div>
   </p-card>
 
+  
+
 </div>
 
 <ng-template *ngIf="movies.length === 0 && filteredMovies!.length === 0" class="flex">
   <h3 class="text-center">No movies found</h3>
 </ng-template>
+

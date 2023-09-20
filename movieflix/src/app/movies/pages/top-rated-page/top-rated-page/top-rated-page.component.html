@@ -1,3 +1,7 @@
-<h2 style="text-align: center;">Top rated movies</h2>
+<h2 style="text-align: center;" id="page-title">Top rated movies</h2>
 
 <movie-list [movies]="movies"></movie-list>
+
+<div class="card flex justify-content-center">
+  <p-paginator (onPageChange)="onPageChange($event)" [rows]="rows" [totalRecords]="100" ></p-paginator>
+</div>

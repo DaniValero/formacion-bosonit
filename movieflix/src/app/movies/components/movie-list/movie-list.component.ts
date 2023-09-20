@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, DoCheck, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import { Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { Genre, Movie } from '../../interfaces/movie.interface';
 import { Router } from '@angular/router';
 import { MoviesService } from '../../services/movies.service';
@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./movie-list.component.scss'],
 })
 export class MovieListComponent implements OnInit, OnDestroy{
+
   @Input()
   public movies: Movie[] = [];
 
@@ -22,7 +23,7 @@ export class MovieListComponent implements OnInit, OnDestroy{
   }
   
   public subscription$!: Subscription
-
+  
   ngOnInit(): void {
     this.subscription$ = this.moviesService.genre$.subscribe((newGenre) => {
       this.genre = newGenre;
@@ -33,8 +34,6 @@ export class MovieListComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     if(this.subscription$) this.subscription$.unsubscribe()
   }
-
-
 
   onCardClick(id: number) {
     this.router.navigate(['movies/movie', id]);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { MoviesService } from '../../services/movies.service';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class LayoutComponent implements OnInit {
   }
 
   navigateHome() {
-    this.router.navigate(['/'])
+    this.router.navigate([`/`]);
   }
 
   searchMovie(searchTerm: string) {
