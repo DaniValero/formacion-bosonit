@@ -11,7 +11,7 @@ import { PaginatorState } from '../../interfaces/pageEvent.interface';
 export class MostPopularPage implements OnInit {
   public movies: Movie[] = [];
   public allMovies: Result[] = []
-  public rows: number = 5;
+  public rows: number = 20;
   
   constructor(private moviesService: MoviesService) {}
   ngOnInit(): void {

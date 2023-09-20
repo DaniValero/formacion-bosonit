@@ -3,5 +3,5 @@
 <movie-list [movies]="movies"></movie-list>
 
 <div class="card flex justify-content-center">
-  <p-paginator (onPageChange)="onPageChange($event)" [rows]="rows" [totalRecords]="100"></p-paginator>
+  <p-paginator (onPageChange)="onPageChange($event)" [rows]="rows" [totalRecords]="100" [pageLinkSize]="5"></p-paginator>
 </div>

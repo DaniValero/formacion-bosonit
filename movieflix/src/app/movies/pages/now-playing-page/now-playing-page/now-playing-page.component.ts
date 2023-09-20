@@ -13,7 +13,7 @@ export class NowPlayingPageComponent {
 
   public allMovies: Result[] = [];
 
-  public rows: number = 10;
+  public rows: number = 20;
 
 
   constructor(private moviesService: MoviesService) {}
