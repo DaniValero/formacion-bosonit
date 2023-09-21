@@ -1,6 +1,6 @@
-<!-- <div class="container" *ngIf="filteredMovies!.length > 0">
+<div class="container" *ngIf="filteredMovies!.length > 0">
 
-  <p-card class="card" *ngFor="let movie of filteredMovies" (click)="onCardClick(movie.id)">
+  <p-card class="card" *ngFor="let movie of filteredMovies" (click)="onMovieClick(movie.id)">
 
     <h5 class="movie-title">{{ movie.title }}</h5>
     <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" [alt]="movie.title">
@@ -15,7 +15,7 @@
 
 <div class="container" *ngIf="filteredMovies!.length === 0 && movies.length > 0">
 
-  <p-card class="card" *ngFor="let movie of movies" (click)="onCardClick(movie.id)">
+  <p-card class="card" *ngFor="let movie of movies" (click)="onMovieClick(movie.id)">
 
     <h5 class="movie-title">{{ movie.title }}</h5>
     <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" [alt]="movie.title">
@@ -29,7 +29,22 @@
 
 </div>
 
-<ng-template *ngIf="movies.length === 0 && filteredMovies!.length === 0" class="flex">
-  <h3 class="text-center">No movies found</h3>
+<ng-template *ngIf="movies.length === 0 && filteredMovies!.length === 0 || series.length === 0" class="flex">
+  <h3 class="text-center">No results found</h3>
 </ng-template>
- -->
+
+
+<div class="container" *ngIf="series.length > 0">
+
+  <p-card class="card" *ngFor="let serie of series" (click)="onSerieClick(serie.id)">
+
+    <h5 class="movie-title">{{ serie.name }}</h5>
+    <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{serie.poster_path}}" [alt]="serie.name">
+    <div class="card-body">
+      <p>Rating: {{serie.vote_average}}</p>
+      <p>Year: {{serie.first_air_date.slice(0, 4)}}</p>
+    </div>
+  </p-card>
+
+
+</div>

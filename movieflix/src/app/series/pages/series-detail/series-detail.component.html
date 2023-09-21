@@ -1,1 +1,79 @@
-<p>series-detail works!</p>
+<div *ngIf="serie" class="flex flex-column container">
+  <h1>{{serie.name}}</h1>
+  <div class="mb-2">
+    <p-chip class="mr-2" *ngFor="let genre of genres">{{ genre.name }}</p-chip>
+  </div>
+
+
+  <div class="flex justify-content-between p-3">
+    <img class="poster" src="https://image.tmdb.org/t/p/w500{{serie.poster_path}}" [alt]="serie.name">
+
+    <div class="p-3">
+      <p class="p-3">{{serie.overview}}</p>
+      <div class="p-3 flex justify-content-around">
+        <p>Runtime: {{serie.episode_run_time}} minutes</p> 
+        <p>Rating: {{serie.vote_average}}</p>
+        <div *ngIf="serie.in_production; else finished">
+          <p class="currently-airing">Currently airing</p>
+        </div>
+        <ng-template #finished class="currently-finished">
+          <p class="currently-finished">Currently finished</p>
+        </ng-template>
+      </div>
+
+      <div class="p-3">
+        <h4>Last episode:</h4>
+        <div class="flex justify-content-between">
+          <img class="episode-poster" src="https://image.tmdb.org/t/p/w500{{serie.last_episode_to_air.still_path}}" [alt]="serie.name">
+          <div class="flex flex-column ml-3">
+            <h5>{{serie.last_episode_to_air.name}}</h5>
+            <p>{{serie.last_episode_to_air.overview}}</p>
+            <p>Air date: {{serie.last_episode_to_air.air_date}}</p>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <h2 class="mt-5">Seasons:</h2>
+  <div class="seasons-wrapper flex flex-wrap justify-content-between">
+    
+    <div *ngFor="let season of seasons" class="season flex mt-5">
+      <img class="season-poster" src="https://image.tmdb.org/t/p/w500{{season.poster_path}}" [alt]="serie.name">
+
+      <div class="flex flex-column">
+      <p class="ml-3 season-title">{{season.name}} - {{season.episode_count}} Episodes</p>
+      <p class="ml-3">{{season.overview}}</p>
+      <p class="ml-3">Season rating: {{season.vote_average}}</p>
+      </div>
+    
+    </div>
+  </div>
+
+
+  <div class="mt-5">
+    <h3>Cast</h3>
+    <div class="flex flex-wrap justify-content-around">
+      <div class="card" *ngFor="let actor of cast!.cast">
+        <img src="https://image.tmdb.org/t/p/w500{{actor.profile_path}}" alt="{{actor.name}}">
+        <div class="card-body">
+          <p> <strong>{{actor.name}}</strong> as <em>{{actor.character}}</em></p>
+        </div>
+      </div>
+    </div>
+    <h3>Crew</h3>
+    <div class="flex flex-wrap justify-content-around">
+      <div class="card" *ngFor="let actor of cast!.crew | slice:0:16">
+        <img src="https://image.tmdb.org/t/p/w500{{actor.profile_path}}" alt="{{actor.name}}">
+        <div class="card-body">
+          <p> <strong>{{actor.name}}</strong> as <em>{{actor.job | slice:0:10}}</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

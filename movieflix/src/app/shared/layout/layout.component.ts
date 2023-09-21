@@ -52,8 +52,4 @@ export class LayoutComponent implements OnInit {
   searchMovie(searchTerm: string) {
     this.router.navigate([`/movies/search/${searchTerm}`]);
   }
-
-  onMenuItemClick(item: MenuItem) {
-    console.log(`Clicked on menu item: ${item.label}`);
-  }
 }

@@ -35,7 +35,7 @@
       <hr>
       <p-menu [model]="seriesItems" class="menuitems">
         <ng-template let-item pTemplate="item">
-          <a [routerLink]="item.routerLink" routerLinkActive="active" (click)="onMenuItemClick(item)">
+          <a [routerLink]="item.routerLink" routerLinkActive="active" >
             <i class="bi {{ item.icon }}"></i>
             {{ item.label }}
           </a>

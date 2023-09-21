@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Movie, Result } from 'src/app/movies/interfaces/movie.interface';
-import { PaginatorState } from 'src/app/movies/interfaces/pageEvent.interface';
+import { PaginatorState } from 'src/app/shared/interfaces/pageEvent.interface';
 import { MoviesService } from 'src/app/movies/services/movies.service';
 
 @Component({
@@ -15,7 +15,6 @@ export class NowPlayingPageComponent {
 
   public rows: number = 20;
 
-
   constructor(private moviesService: MoviesService) {}
 
   ngOnInit(): void {
@@ -24,7 +23,6 @@ export class NowPlayingPageComponent {
       this.movies = this.allMovies[0].results;
     });
   }
-
 
   onPageChange(event: PaginatorState) {
     this.movies = this.allMovies[event.page!].results;

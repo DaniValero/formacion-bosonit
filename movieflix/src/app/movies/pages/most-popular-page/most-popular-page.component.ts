@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from 'src/app/movies/services/movies.service';
 import { Movie, Result } from '../../interfaces/movie.interface';
-import { PaginatorState } from '../../interfaces/pageEvent.interface';
+import { PaginatorState } from '../../../shared/interfaces/pageEvent.interface';
 
 @Component({
   selector: 'most-popular-page',
@@ -10,23 +10,27 @@ import { PaginatorState } from '../../interfaces/pageEvent.interface';
 })
 export class MostPopularPage implements OnInit {
   public movies: Movie[] = [];
-  public allMovies: Result[] = []
+  public allMovies: Result[] = [];
   public rows: number = 20;
-  
+
   constructor(private moviesService: MoviesService) {}
   ngOnInit(): void {
     this.moviesService.getAllMovies().subscribe((response) => {
-      this.allMovies = response
-      this.movies = this.allMovies[0].results
+      this.allMovies = response;
+      this.movies = this.allMovies[0].results;
     });
   }
   onPageChange(event: PaginatorState) {
-    this.movies = this.allMovies[event.page!].results
+    this.movies = this.allMovies[event.page!].results;
 
-    const h2Element = document.getElementById("page-title")
+    const h2Element = document.getElementById('page-title');
 
     if (h2Element) {
-      h2Element.scrollIntoView({behavior: 'smooth',block: 'start',inline: 'start'});
+      h2Element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start',
+      });
     }
   }
 }

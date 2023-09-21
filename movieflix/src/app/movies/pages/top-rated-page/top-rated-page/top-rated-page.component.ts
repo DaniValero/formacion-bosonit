@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie, Result } from 'src/app/movies/interfaces/movie.interface';
-import { PaginatorState } from 'src/app/movies/interfaces/pageEvent.interface';
+import { PaginatorState } from 'src/app/shared/interfaces/pageEvent.interface';
 import { MoviesService } from 'src/app/movies/services/movies.service';
 
 @Component({

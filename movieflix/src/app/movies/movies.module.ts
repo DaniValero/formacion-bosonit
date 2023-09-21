@@ -14,7 +14,6 @@ import { SearchResultsPageComponent } from './pages/search-results-page/search-r
 @NgModule({
   declarations: [
     MostPopularPage,
-    CardListComponent,
     MoviePageComponent,
     TopRatedPageComponent,
     NowPlayingPageComponent,
