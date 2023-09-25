@@ -23,7 +23,8 @@ export interface Movie {
   title:             string;
   video:             boolean;
   vote_average:      number;
-  vote_count:        number;
+  vote_count: number;
+  runtime: number;
 }
 
 export interface Genre {

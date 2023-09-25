@@ -55,6 +55,8 @@ export class MoviePageComponent implements OnInit {
 
   getTrailerUrl(key: string): SafeResourceUrl {
     const url = `https://www.youtube.com/embed/${key}`;
+    console.log(this.movie)
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    
   }
 }

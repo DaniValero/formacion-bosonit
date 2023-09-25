@@ -60,4 +60,12 @@ export class SeriesService {
       headers,
     });
   }
+
+  searchSeriesByName(query: string): Observable<Result> {
+    const headers = this.getHeaders();
+    return this.http.get<Result>(`${this.apiUrl}/search/tv?query=${query}`, {
+      headers,
+    });
+
+  }
 }
