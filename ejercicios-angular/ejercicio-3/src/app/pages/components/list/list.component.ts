@@ -1,36 +1,62 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { Observable, takeUntil, Subject, filter } from 'rxjs';
 import { User } from 'src/app/interfaces/user.interface';
 import { DataService } from 'src/app/services/data.service';
+import { TableService } from 'src/app/services/table.service';
 
 @Component({
   selector: 'crud-list',
   templateUrl: './list.component.html',
-  styles: [ 
-  ]
+  styles: [],
 })
-  
-export class ListComponent implements OnInit{
-
-  public users: User[] = []
+export class ListComponent implements OnInit, OnDestroy {
+  public users: User[] = [];
+  private _unsubscribe$ = new Subject<boolean>();
 
   constructor(
-    private dataService: DataService
-  ) { }
-  
+    private _dataService: DataService,
+    private _tableService: TableService
+  ) {}
+
   ngOnInit(): void {
-    this.dataService.getUsers().subscribe(user => this.users = user)
+    this.getUsers()
+    this.getReloadTable()
+    
   }
 
   onButtonClick(user: User) {
-    this.dataService.setUser(user)
+    this._dataService.setUser(user);
   }
- 
 
   deleteUser(user: User) {
-    this.dataService.deleteUser(user).subscribe()
-    console.log(user)
-    window.location.reload()
+    this._dataService
+      .deleteUser(user)
+      .pipe(takeUntil(this._unsubscribe$))
+      .subscribe(() => this._tableService.setReloadTable(true));
   }
 
+  getUsers() {
+    this._dataService
+      .getUsers()
+      .pipe(takeUntil(this._unsubscribe$))
+      .subscribe((user) => (this.users = user));
+  }
+
+  getReloadTable() {
+    this._tableService.getReloadTable$().pipe(
+      takeUntil(this._unsubscribe$),
+      filter((resp) => (resp))
+    ).subscribe(() => {this.getUsers()})
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribe$.next(true);
+    this._unsubscribe$.complete();
+  }
 }

@@ -2,23 +2,13 @@
   "users": [
     {
       "id": 1,
-      "username": "Serresiete",
-      "email": "cr7@mail.com",
-      "password": "777",
-      "password2": "777",
-      "hasNotifications": false,
-      "country": "Portugal",
-      "city": "SIUUUUUUUUUU"
-    },
-    {
-      "id": 7,
-      "username": "juan",
-      "email": "juan@mail.com",
+      "username": "adadsadas",
+      "email": "asddas@gmail.com",
       "password": "123",
       "password2": "123",
       "hasNotifications": "",
-      "country": "Vatican City",
-      "city": "eqweqw"
+      "country": "Suriname",
+      "city": "asdasd"
     }
   ]
 }

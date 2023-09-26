@@ -13,7 +13,6 @@ export class ObservablesService {
   constructor() {}
 
   public parentObservable$ = new Observable((observer) => {
-    console.log('obs starts');
     observer.next('The Parent is using observable');
   });
 
@@ -26,6 +25,7 @@ export class ObservablesService {
     return of(message)
   }
 
+  
   onParentUsingObservable(message: string): Observable<string> {
     return of(message)
   }

@@ -1,62 +1,109 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { forkJoin, switchMap } from 'rxjs';
+import { Subject, map, switchMap, takeUntil } from 'rxjs';
 import { Genre, Movie } from '../../interfaces/movie.interface';
-import { VideoResult, Trailer } from '../../interfaces/video.interface';
+import { VideoResult, } from '../../interfaces/video.interface';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { Cast, CastElement } from '../../interfaces/cast.interface';
+import { CastElement } from '../../interfaces/cast.interface';
+import { Observable } from 'rxjs';
+import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
   selector: 'movie-page',
   templateUrl: './movie-page.component.html',
   styleUrls: ['./movie-page.component.scss'],
 })
-export class MoviePageComponent implements OnInit {
+export class MoviePageComponent implements OnInit, OnDestroy {
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private moviesService: MoviesService,
-    private router: Router,
-    private sanitizer: DomSanitizer
+    private _activatedRoute: ActivatedRoute,
+    private _moviesService: MoviesService,
+    private _router: Router,
+    private _sanitizer: DomSanitizer,
+    private _favoritesService: FavoritesService
   ) {}
 
-  public movie?: Movie;
-  public genres?: Genre[];
-  public trailer?: VideoResult[];
-  public cast?: CastElement[]
+  public movie$?: Observable<Movie>;
+  public genres$?: Observable<Genre[]>;
+  public trailer$?: Observable<VideoResult[]>;
+  public cast$?: Observable<CastElement[]>;
+  public favorite: boolean = false;
+
+  private _unsubscribe$ = new Subject<boolean>();
 
   ngOnInit(): void {
-    this.activatedRoute.params
-      .pipe(
-        switchMap(({ id }) => {
-          return forkJoin([
-            this.moviesService.getMovieById(id),
-            this.moviesService.getMovieTrailer(id),
-            this.moviesService.getCastMembers(id)
-          ]);
-        })
-      )
-      .subscribe(([movie, videos, cast]: [Movie, Trailer, Cast]) => {
-        if (!movie) {
-          this.router.navigateByUrl('');
-          return;
-        }
+    this.getData();
+  }
 
-        this.movie = movie;
-        this.genres = movie.genres;
+  ngOnDestroy(): void {
+    this._unsubscribe$.next(true);
+    this._unsubscribe$.complete();
+  }
 
-        this.trailer = videos.results.filter(
-          (video) => video.type === 'Trailer'
-        );
-
-        this.cast = cast.cast.slice(0, 16)
+  getData() {
+    this.movie$ = this._activatedRoute.params.pipe(
+      takeUntil(this._unsubscribe$),
+      switchMap(({ id }) => {
+        return this._moviesService.getMovieById(id);
       })
+    );
+
+    this.genres$ = this.movie$.pipe(
+      takeUntil(this._unsubscribe$),
+      switchMap((movie) => {
+        if (!movie) {
+          this._router.navigateByUrl('');
+          return [];
+        }
+        return movie.genres ? [movie.genres] : [];
+      }),
+      map((genres) => genres as Genre[])
+    );
+
+    this.trailer$ = this._activatedRoute.params.pipe(
+      takeUntil(this._unsubscribe$),
+      switchMap(({ id }) => {
+        return this._moviesService.getMovieTrailer(id);
+      }),
+      map((videos) =>
+        videos.results.filter((video) => video.type === 'Trailer')
+      )
+    );
+
+    this.cast$ = this._activatedRoute.params.pipe(
+      takeUntil(this._unsubscribe$),
+      switchMap(({ id }) => {
+        return this._moviesService.getCastMembers(id);
+      }),
+      map((cast) => cast.cast.slice(0, 16))
+    );
+  }
+
+  isMovieInFavorites(id: number): boolean {
+    const favorites = this._favoritesService.getFavorites();
+    return favorites.includes(id);
+  }
+
+  toggleFavorite(): void {
+    this.favorite = !this.favorite;
+    this.movie$!.pipe(takeUntil(this._unsubscribe$)).subscribe((movie) => {
+      if (movie) {
+        const movieId = movie.id || 0;
+        if (this.favorite) {
+          if (!this.isMovieInFavorites(movieId)) {
+            this._favoritesService.addToFavorites(movieId);
+          }
+        } else {
+          if (this.isMovieInFavorites(movieId)) {
+            this._favoritesService.removeFromFavorites(movieId);
+          }
+        }
+      }
+    });
   }
 
   getTrailerUrl(key: string): SafeResourceUrl {
     const url = `https://www.youtube.com/embed/${key}`;
-    console.log(this.movie)
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    
+    return this._sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

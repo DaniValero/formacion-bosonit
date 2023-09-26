@@ -25,6 +25,7 @@ export interface Movie {
   vote_average:      number;
   vote_count: number;
   runtime: number;
+  favorite: boolean;
 }
 
 export interface Genre {

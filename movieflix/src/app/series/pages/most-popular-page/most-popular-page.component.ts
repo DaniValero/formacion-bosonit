@@ -1,24 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SeriesService } from '../../services/series.service';
 import { Result, Serie } from '../../interfaces/serie.interface';
 import { PaginatorState } from 'src/app/shared/interfaces/pageEvent.interface';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'most-popular-page',
   templateUrl: './most-popular-page.component.html',
   styleUrls: ['./most-popular-page.component.scss'],
 })
-export class MostPopularPageComponent implements OnInit {
+export class MostPopularPageComponent implements OnInit, OnDestroy {
   public series: Serie[] = [];
   public allSeries: Result[] = [];
   public rows: number = 20;
+  
+  private _unsuscribe$ = new Subject()
+  
 
-  constructor(private seriesService: SeriesService) {}
+  constructor(private _seriesService: SeriesService) {}
+
   ngOnInit(): void {
-    this.seriesService.getPopularSeries().subscribe((response) => {
+    this.getSeries()
+  }
+
+  getSeries() {
+    this._seriesService.getPopularSeries().pipe(
+      takeUntil(this._unsuscribe$)
+    ).subscribe((response) => {
       this.allSeries = response;
       this.series = this.allSeries[0].results;
     });
+  }
+
+  ngOnDestroy(): void {
+    this._unsuscribe$.next(true)
+    this._unsuscribe$.complete()
   }
 
   onPageChange(event: PaginatorState) {

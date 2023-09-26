@@ -1,49 +1,57 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { forkJoin, switchMap } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, Subject, switchMap, takeUntil, map } from 'rxjs';
 import { SeriesService } from '../../services/series.service';
 import { Genre, Season, SerieDetail } from '../../interfaces/serie-detail.interface';
-import { Cast, CastElement } from '../../interfaces/cast.interface';
+import { Cast } from '../../interfaces/cast.interface';
 
 @Component({
   selector: 'series-detail',
   templateUrl: './series-detail.component.html',
   styleUrls: ['./series-detail.component.scss'],
 })
-export class SeriesDetailComponent implements OnInit {
+export class SeriesDetailComponent implements OnInit, OnDestroy {
+  public serie$?: Observable<SerieDetail>
 
-  public serie?: SerieDetail
+  public genres$?: Observable<Genre[]>;
 
-  public genres?: Genre[]
+  public seasons$?: Observable<Season[]>;
 
-  public seasons?: Season[]
+  public cast$?: Observable<Cast>;
 
-  public cast?: Cast
-
+  private _unsubscribe$ = new Subject()
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private seriesService: SeriesService
-  ) { }
+    private _activatedRoute: ActivatedRoute,
+    private _seriesService: SeriesService
+  ) {}
+
   ngOnInit(): void {
-    this.activatedRoute.params
-      .pipe(
-        switchMap(({ id }) => {
-          return forkJoin([
-            this.seriesService.getSerieById(id),
-            this.seriesService.getCastMembers(id)
-          ])
-        })
-      )
-      .subscribe(([serie, cast]: [SerieDetail, Cast]) => {
-        if (!serie) {
-          this.router.navigateByUrl('/series/popular');
-        }
-        this.serie = serie;
-        this.genres = serie.genres;
-        this.seasons = serie.seasons;
-        this.cast = cast
-      });
+    this.getDetails()
+  }
+
+  getDetails() {
+    this.serie$ = this._activatedRoute.params.pipe(
+      takeUntil(this._unsubscribe$),
+      switchMap(({ id }) => {
+        return this._seriesService.getSerieById(id);
+      })
+    );
+
+    this.cast$ = this._activatedRoute.params.pipe(
+      takeUntil(this._unsubscribe$),
+      switchMap(({ id }) => {
+        return this._seriesService.getCastMembers(id);
+      })
+    );
+
+    this.seasons$ = this.serie$.pipe(
+      map((serie) => (serie ? serie.seasons : []))
+    );
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribe$.next(true)
+    this._unsubscribe$.complete()
   }
 }
