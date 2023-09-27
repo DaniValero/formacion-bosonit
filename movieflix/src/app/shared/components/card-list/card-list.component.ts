@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MoviesService } from '../../../movies/services/movies.service';
-import { Subscription } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { Genre, Movie } from 'src/app/movies/interfaces/movie.interface';
 import { Serie } from 'src/app/series/interfaces/serie.interface';
 
@@ -22,33 +22,35 @@ export class CardListComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router, private moviesService: MoviesService) {}
 
-  public subscription$!: Subscription;
+  private _unsubscribe$ = new Subject<boolean>();
 
   ngOnInit(): void {
-    this.subscription$ = this.moviesService.genre$.subscribe((newGenre) => {
-      this.genre = newGenre;
-      this.filterMoviesByGenre();
-      console.log(this.genre);
-    });
+    this.getGenres()
   }
   ngOnDestroy(): void {
-    if (this.subscription$) this.subscription$.unsubscribe();
+    this._unsubscribe$.next(true)
+    this._unsubscribe$.complete()
   }
 
   onMovieClick(id: number) {
     this.router.navigate(['movies/movie', id]);
   }
-
-  public filterMoviesByGenre() {
+  
+  onSerieClick(id: number) {
+    this.router.navigate(['series/serie', id]);
+  }
+  
+  getGenres() {
+    this.moviesService.genre$
+      .pipe(takeUntil(this._unsubscribe$))
+      .subscribe((newGenre) => {
+        this.genre = newGenre;
+        this.filterMoviesByGenre();
+    });
+  }
+  filterMoviesByGenre() {
     this.filteredMovies = this.movies.filter((movie) =>
       movie.genre_ids.includes(this.genre!.id)
     );
   }
-
-
-  onSerieClick(id: number) {
-    this.router.navigate(['series/serie', id])
-  }
-
-
 }

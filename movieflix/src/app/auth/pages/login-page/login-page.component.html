@@ -1,0 +1,21 @@
+
+<div class="flex flex-column justify-content-center align-items-center">
+
+  <h2 class="mt-7">Account Login</h2>
+
+  <form class="form-container">
+    
+    <label class="mb-2" for="email">Email:</label>
+    <input type="email" pInputText />
+
+    <label class="mb-2" for="password">Password:</label>
+    <input type="password" pInputText>
+
+    <p-button (onClick)="onLogin()">Login</p-button>
+
+  </form>
+  
+  <div class="flex justify-content-end mt-5">
+    <a routerLink="/auth/register">You don't have an account?</a>
+  </div>
+</div>

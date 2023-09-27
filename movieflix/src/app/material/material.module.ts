@@ -11,6 +11,8 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { CardModule } from 'primeng/card';
 import { ChipModule } from 'primeng/chip';
 import { PaginatorModule } from 'primeng/paginator';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
   exports: [
@@ -25,6 +27,8 @@ import { PaginatorModule } from 'primeng/paginator';
     CardModule,
     ChipModule,
     PaginatorModule,
+    InputTextModule,
+    PasswordModule
   ],
 })
 export class MaterialModule {}

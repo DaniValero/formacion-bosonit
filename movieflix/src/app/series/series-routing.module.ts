@@ -5,6 +5,7 @@ import { TopRatedPageComponent } from './pages/top-rated-page/top-rated-page.com
 import { SeriesDetailComponent } from './pages/series-detail/series-detail.component';
 import { SearchResultsPageComponent } from './pages/search-results-page/search-results-page.component';
 import { LayoutComponent } from '../shared/layout/layout.component';
+import { FavoriteSeriesPageComponent } from './pages/favorite-series-page/favorite-series-page/favorite-series-page.component';
 
 const routes: Routes = [
   {
@@ -12,28 +13,32 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: "popular",
-        component: MostPopularPageComponent
+        path: 'popular',
+        component: MostPopularPageComponent,
       },
       {
-        path: "top",
-        component: TopRatedPageComponent
+        path: 'top',
+        component: TopRatedPageComponent,
       },
       {
-        path: "search/:query",
-        component: SearchResultsPageComponent
+        path: 'favorites',
+        component: FavoriteSeriesPageComponent,
       },
       {
-        path: "serie/:id",
-        component: SeriesDetailComponent
+        path: 'search/:query',
+        component: SearchResultsPageComponent,
       },
       {
-        path: "**",
-        redirectTo: "popular"
+        path: 'serie/:id',
+        component: SeriesDetailComponent,
       },
-    ]
-  }
-]
+      {
+        path: '**',
+        redirectTo: 'popular',
+      },
+    ],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

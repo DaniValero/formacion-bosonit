@@ -5,9 +5,10 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { LayoutComponent } from './layout/layout.component';
 import { CardListComponent } from './components/card-list/card-list.component';
+import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 
 @NgModule({
-  declarations: [SearchBoxComponent, LayoutComponent, CardListComponent],
+  declarations: [SearchBoxComponent, LayoutComponent, CardListComponent, WelcomePageComponent],
   imports: [CommonModule, RouterModule, MaterialModule],
   exports: [SearchBoxComponent, LayoutComponent, CardListComponent],
 })

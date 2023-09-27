@@ -9,7 +9,6 @@ export class NavigationService {
   constructor(private activatedRoute: ActivatedRoute, private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        // Update the current route whenever navigation ends
         this.currentRoute = this.router.url.split('/')[1];
       }
     });

@@ -1,7 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-
 :root {
-background: rgb(7, 41, 82);
+  background: rgb(7, 41, 82);
   background: linear-gradient(218deg, rgba(7, 41, 82, 1) 0%, rgba(23, 50, 153, 1) 31%, rgba(49, 89, 144, 1) 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -25,3 +23,5 @@ option {
   background-color: var(--highlight-bg);
   color: rgb(0, 0, 0);
 }
+
+

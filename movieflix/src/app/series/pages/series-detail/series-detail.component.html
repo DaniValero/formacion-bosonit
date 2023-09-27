@@ -1,5 +1,23 @@
 <div *ngIf="serie$ | async as serie" class="flex flex-column container">
-  <h1>{{serie.name}}</h1>
+  <div class="flex justify-content-between">
+    <h1>{{ serie.name }}</h1>
+  
+    <div *ngIf="favorite; else notFavorite" class="flex justify-content-between mt-2">
+      <div class="m-2 favorite-button-true" (click)="toggleFavorite()">
+        Remove favorite <i class="bi bi-heart-fill"></i>
+      </div>
+  
+    </div>
+  
+  </div>
+  
+  <ng-template #notFavorite>
+    <div class="m-2 favorite-button-false" (click)="toggleFavorite()">
+      Add to favorites <i class="bi bi-heart"></i></div>
+  </ng-template>
+
+
+
   <div class="mb-2">
     <p-chip class="mr-2" *ngFor="let genre of genres$ | async">{{ genre.name }}</p-chip>
   </div>
@@ -21,13 +39,13 @@
         </ng-template>
       </div>
 
-      <div class="p-3">
-        <h4>Last episode:</h4>
-        <div class="flex justify-content-between">
+      <div class="p-3 ml-3 last-episode">
+        <h4 class="ml-3 text-center">Last episode:</h4>
+        <div class="flex">
           <img class="episode-poster" src="https://image.tmdb.org/t/p/w500{{serie.last_episode_to_air.still_path}}" [alt]="serie.name">
-          <div class="flex flex-column ml-3">
+          <div class="flex flex-column ml-3 text-justify">
             <h5>{{serie.last_episode_to_air.name}}</h5>
-            <p>{{serie.last_episode_to_air.overview}}</p>
+            <p>Overview: {{serie.last_episode_to_air.overview}}</p>
             <p>Air date: {{serie.last_episode_to_air.air_date}}</p>
           </div>
         </div>

@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { WelcomePageComponent } from './shared/pages/welcome-page/welcome-page.component';
 
 const routes: Routes = [
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
   {
     path: 'movies',
     loadChildren: () =>
@@ -14,8 +19,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'movies',
-    pathMatch: 'full',
+    component: WelcomePageComponent,
   },
 ];
 

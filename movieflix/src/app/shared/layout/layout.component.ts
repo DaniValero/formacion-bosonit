@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { NavigationService } from '../services/navigation.service';
@@ -20,7 +20,7 @@ export class LayoutComponent{
     this.movieItems = [
       {
         label: 'Most Popular',
-        routerLink: ['/'],
+        routerLink: ['/movies/popular'],
         icon: 'bi-fire',
       },
       {
@@ -32,6 +32,11 @@ export class LayoutComponent{
         label: 'Now Playing',
         routerLink: ['/movies/now-playing'],
         icon: 'bi-ticket-perforated-fill',
+      },
+      {
+        label: 'Favorites',
+        routerLink: ['/movies/favorites'],
+        icon: 'bi bi-suit-heart-fill',
       },
     ];
 
@@ -45,6 +50,11 @@ export class LayoutComponent{
         label: 'Top Rated',
         routerLink: ['/series/top'],
         icon: 'bi-trophy-fill',
+      },
+      {
+        label: 'Favorites',
+        routerLink: ['/series/favorites'],
+        icon: 'bi bi-suit-heart-fill',
       },
     ];
   }

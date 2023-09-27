@@ -1,0 +1,26 @@
+<div class="flex flex-column justify-content-center align-items-center">
+
+  <h2 class="mt-7">Create an account</h2>
+  <form [formGroup]="registerForm!" (ngSubmit)="onRegister()" class="form-container">
+
+    <label class="mb-2" htmlFor="name">Name</label>
+    <input type="text" pInputText id="name"/>
+
+    <label class="mb-2" htmlFor="email">Email</label>
+    <input type="email" pInputText id="email"/>
+
+    <label class="mb-2" htmlFor="password">Password</label>
+    <input type="password" pInputText id="password" />
+
+    <label class="mb-2" htmlFor="password2">Confirm password</label>
+    <input type="password" pInputText id="password2" />
+
+    <p-button (onClick)="onRegister()">Register</p-button>
+    
+  </form>
+
+  <div class="flex justify-content-end mt-5">
+    <a routerLink="/auth/login">You already have an account?</a>
+  </div>
+</div>
+
