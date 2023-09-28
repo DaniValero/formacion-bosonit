@@ -6,6 +6,32 @@
       "password": "1234",
       "favoriteMovies": [],
       "favoriteSeries": []
+    },
+    {
+      "name": "Pepe",
+      "email": "pepe@gmail.com",
+      "password": "123abc",
+      "id": 2,
+      "favoriteMovies": [
+        238
+      ],
+      "favoriteSeries": [
+        1396
+      ]
+    },
+    {
+      "name": "Juan",
+      "email": "juan@gmail.com",
+      "password": "123abc",
+      "id": 3,
+      "favoriteMovies": [
+        346698,
+        615656
+      ],
+      "favoriteSeries": [
+        37854,
+        1396
+      ]
     }
   ]
 }

@@ -18,6 +18,14 @@ export class NavigationService {
     this.router.navigate(['/']);
   }
 
+  navigateToProfile(id: number) {
+    this.router.navigate([`auth/user/${id}/profile`])
+  }
+
+  navigateToLogin() {
+    this.router.navigate(['auth/login'])
+  }
+
   getCurrentRoute(): string {
     return this.currentRoute;
   }

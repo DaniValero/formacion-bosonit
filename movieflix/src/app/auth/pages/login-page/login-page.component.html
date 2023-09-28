@@ -3,13 +3,13 @@
 
   <h2 class="mt-7">Account Login</h2>
 
-  <form class="form-container">
+  <form [formGroup]="loginForm!" (ngSubmit)="onLogin()" class="form-container">
     
     <label class="mb-2" for="email">Email:</label>
-    <input type="email" pInputText />
+    <input type="email" pInputText formControlName="email"/>
 
     <label class="mb-2" for="password">Password:</label>
-    <input type="password" pInputText>
+    <input type="password" pInputText formControlName="password">
 
     <p-button (onClick)="onLogin()">Login</p-button>
 

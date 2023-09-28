@@ -11,16 +11,15 @@ export class FormService {
   createLoginForm(): FormGroup {
     return this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
-  // Create a registration form
   createRegistrationForm(): FormGroup {
     return this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
       password2: ['', [Validators.required]],
     });
   }

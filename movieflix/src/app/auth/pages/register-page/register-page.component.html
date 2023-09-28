@@ -4,16 +4,16 @@
   <form [formGroup]="registerForm!" (ngSubmit)="onRegister()" class="form-container">
 
     <label class="mb-2" htmlFor="name">Name</label>
-    <input type="text" pInputText id="name"/>
+    <input type="text" pInputText formControlName="name"/>
 
     <label class="mb-2" htmlFor="email">Email</label>
-    <input type="email" pInputText id="email"/>
+    <input type="email" pInputText formControlName="email"/>
 
     <label class="mb-2" htmlFor="password">Password</label>
-    <input type="password" pInputText id="password" />
+    <input type="password" pInputText formControlName="password" />
 
     <label class="mb-2" htmlFor="password2">Confirm password</label>
-    <input type="password" pInputText id="password2" />
+    <input type="password" pInputText formControlName="password2" />
 
     <p-button (onClick)="onRegister()">Register</p-button>
     

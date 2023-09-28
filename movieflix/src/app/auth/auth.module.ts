@@ -7,11 +7,13 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserProfilePageComponent } from './pages/user-profile-page/user-profile-page.component';
 
 @NgModule({
   declarations: [
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    UserProfilePageComponent
   ],
   imports: [CommonModule, AuthRoutingModule, SharedModule, MaterialModule, ReactiveFormsModule],
 })

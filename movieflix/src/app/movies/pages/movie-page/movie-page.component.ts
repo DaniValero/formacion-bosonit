@@ -96,7 +96,10 @@ export class MoviePageComponent implements OnInit, OnDestroy {
     this.favorite = !this.favorite;
     this.movie$!.pipe(takeUntil(this._unsubscribe$)).subscribe((movie) => {
       if (!this.isMovieInFavorites(movie.id)) {
-        this._favoritesService.addToFavoriteMovies(movie.id);
+        this._favoritesService.addToFavoriteMovies(movie.id)
+
+
+
       } else if (this.isMovieInFavorites(movie.id)) {
         this._favoritesService.removeFromFavoriteMovies(movie.id);
       }

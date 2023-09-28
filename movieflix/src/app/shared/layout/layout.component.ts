@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { NavigationService } from '../services/navigation.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 
 @Component({
@@ -9,13 +10,15 @@ import { NavigationService } from '../services/navigation.service';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.scss'],
 })
-export class LayoutComponent{
+export class LayoutComponent implements OnInit{
   public movieItems: MenuItem[] = [];
   public seriesItems: MenuItem[] = [];
+  public isAuthenticated?: boolean
 
   constructor(
-    private navigationService: NavigationService,
-    private router: Router
+    private _navigationService: NavigationService,
+    private _router: Router,
+    private _authService: AuthService
   ) {
     this.movieItems = [
       {
@@ -59,26 +62,47 @@ export class LayoutComponent{
     ];
   }
 
-  navigateHome() {
-    this.navigationService.navigateHome();
+  ngOnInit() {
+    this.checkAuthentication()
+  }
+
+  checkAuthentication() {
+    if (this._authService.checkAuthentication()) {
+      this.isAuthenticated = true
+    }
+  }
+
+  navigateToLogin() {
+    this._navigationService.navigateToLogin()
+  }
+
+  logout() {
+    this._authService.logout();
+    this.navigateToLogin()
+  }
+
+  navigateToProfile() {
+    const userId = this._authService.currentUser!.id
+
+    if (userId) {
+      this._navigationService.navigateToProfile(userId!);
+    } else {
+      this._navigationService.navigateHome()
+    }
   }
 
   searchItem(searchTerm: string) {
-    // Get the current route from the service
-    const currentRoute = this.navigationService.getCurrentRoute();
+    const currentRoute = this._navigationService.getCurrentRoute();
 
-    // Construct the URL based on the current route
     let redirectRoute = '';
     if (currentRoute === 'movies') {
       redirectRoute = '/movies/search';
     } else if (currentRoute === 'series') {
       redirectRoute = '/series/search';
     } else {
-      // Handle other routes or provide a default route
       redirectRoute = '/';
     }
 
-    // Navigate to the constructed URL
-    this.router.navigate([redirectRoute, searchTerm]);
+    this._router.navigate([redirectRoute, searchTerm]);
   }
 }

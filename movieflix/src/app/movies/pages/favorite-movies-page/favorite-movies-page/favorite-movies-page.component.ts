@@ -31,7 +31,7 @@ export class FavoriteMoviesPageComponent implements OnInit, OnDestroy {
   }
 
   getFavorites() {
-    this.favorites = this._favoritesService.getFavoriteMovies();
+    this.favorites = this._favoritesService.getFavoriteMovies()
   }
 
   searchMovies() {
