@@ -30,8 +30,12 @@ const routes: Routes = [
         component: FavoriteMoviesPageComponent,
       },
       {
-        path: 'search/:query',
+        path: 'search/:moviename',
         component: SearchResultsPageComponent,
+      },
+      {
+        path: 'genre/:genreid',
+        component: SearchResultsPageComponent
       },
       {
         path: 'movie/:id',

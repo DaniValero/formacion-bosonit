@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   selector: 'main-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.scss'],
+  // providers: [NavigationService]
 })
 export class LayoutComponent implements OnInit{
   public movieItems: MenuItem[] = [];
@@ -36,11 +37,11 @@ export class LayoutComponent implements OnInit{
         routerLink: ['/movies/now-playing'],
         icon: 'bi-ticket-perforated-fill',
       },
-      {
-        label: 'Favorites',
-        routerLink: ['/movies/favorites'],
-        icon: 'bi bi-suit-heart-fill',
-      },
+      // {
+      //   label: 'Favorites',
+      //   routerLink: ['/movies/favorites'],
+      //   icon: 'bi bi-suit-heart-fill',
+      // },
     ];
 
     this.seriesItems = [
@@ -54,11 +55,11 @@ export class LayoutComponent implements OnInit{
         routerLink: ['/series/top'],
         icon: 'bi-trophy-fill',
       },
-      {
-        label: 'Favorites',
-        routerLink: ['/series/favorites'],
-        icon: 'bi bi-suit-heart-fill',
-      },
+      // {
+      //   label: 'Favorites',
+      //   routerLink: ['/series/favorites'],
+      //   icon: 'bi bi-suit-heart-fill',
+      // },
     ];
   }
 
@@ -102,6 +103,7 @@ export class LayoutComponent implements OnInit{
     } else {
       redirectRoute = '/';
     }
+
 
     this._router.navigate([redirectRoute, searchTerm]);
   }

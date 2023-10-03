@@ -11,7 +11,8 @@
     <label class="mb-2" for="password">Password:</label>
     <input type="password" pInputText formControlName="password">
 
-    <p-button (onClick)="onLogin()">Login</p-button>
+    <p-toast></p-toast>
+    <p-button class="align-self-center" type="submit" (onClick)="onLogin()">Login</p-button>
 
   </form>
   

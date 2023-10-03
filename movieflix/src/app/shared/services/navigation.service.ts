@@ -6,24 +6,24 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 })
 export class NavigationService {
   private currentRoute: string = '';
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
-    this.router.events.subscribe((event) => {
+  constructor(private _activatedRoute: ActivatedRoute, private _router: Router) {
+    this._router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.currentRoute = this.router.url.split('/')[1];
+        this.currentRoute = this._router.url.split('/')[1];
       }
     });
   }
 
   navigateHome() {
-    this.router.navigate(['/']);
+    this._router.navigate(['/']);
   }
 
   navigateToProfile(id: number) {
-    this.router.navigate([`auth/user/${id}/profile`])
+    this._router.navigate([`auth/user/${id}/profile`])
   }
 
   navigateToLogin() {
-    this.router.navigate(['auth/login'])
+    this._router.navigate(['auth/login'])
   }
 
   getCurrentRoute(): string {

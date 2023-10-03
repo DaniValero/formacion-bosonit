@@ -21,7 +21,6 @@ export class FavoritesService {
 
   addToFavoriteMovies(movieId: number): void {
     const favorites = this.getFavoriteMovies();
-    console.log({favorites})
     if (!favorites.includes(movieId)) {
       favorites.push(movieId);
       localStorage.setItem(this._favoriteMovies, JSON.stringify(favorites));

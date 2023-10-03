@@ -54,7 +54,6 @@ export class FormComponent implements OnInit {
 
   onSubmit() {
     if (this.myForm.invalid) return;
-    console.log(this.currentUser)
       this.dataService
         .createUser(this.currentUser)
         .subscribe(() => window.location.reload());

@@ -13,6 +13,7 @@ import { ChipModule } from 'primeng/chip';
 import { PaginatorModule } from 'primeng/paginator';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   exports: [
@@ -28,7 +29,8 @@ import { PasswordModule } from 'primeng/password';
     ChipModule,
     PaginatorModule,
     InputTextModule,
-    PasswordModule
+    PasswordModule,
+    ToastModule
   ],
 })
 export class MaterialModule {}

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomePageComponent } from './shared/pages/welcome-page/welcome-page.component';
+import { canActivateGuard, canMatchGuard } from './auth/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -11,11 +12,14 @@ const routes: Routes = [
     path: 'movies',
     loadChildren: () =>
       import('./movies/movies.module').then((m) => m.MoviesModule),
+    canActivate: [canActivateGuard],
+    canMatch: [canMatchGuard],
   },
   {
     path: 'series',
-    loadChildren: () =>
-      import('./series/series.module').then((m) => m.SeriesModule),
+    loadChildren: () => import('./series/series.module').then((m) => m.SeriesModule),
+    canActivate: [canActivateGuard],
+    canMatch: [canMatchGuard],
   },
   {
     path: '',

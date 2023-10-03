@@ -1,4 +1,4 @@
-<input (keyup)="onKeyPress(txtInput.value)" type="text" [placeholder]="placeholder" #txtInput>
+<input *ngIf="searchOption === 'name'" (keyup)="onKeyPress(txtInput.value)" type="text" [placeholder]="placeholder" #txtInput>
 <select name="search" id="search" (change)="onSearchOptionChange($event)" class="mr-2">
   <option value="name" selected>By name</option>
   <option value="genre">By genre</option>

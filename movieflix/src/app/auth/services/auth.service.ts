@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user.interface';
 import { environments } from 'src/environments/environments';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, catchError, map, of, switchMap, tap, throwError } from 'rxjs';
-import { FavoritesService } from 'src/app/shared/services/favorites.service';
+import { BehaviorSubject, Observable, catchError, map, of, switchMap, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +15,7 @@ export class AuthService {
 
   constructor(
     private _http: HttpClient,
+    private _router: Router
   ) { }
 
   login(email: string, password: string): Observable<User> {
@@ -74,7 +75,6 @@ export class AuthService {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      console.log('no hay token');
       return of(false);
     }
 
@@ -85,6 +85,11 @@ export class AuthService {
         return of(false);
       })
     );
+  }
+
+  updateUser(name: string, email: string, password: string, id:number): Observable<User> {
+    const userDetails = { name, email, password };
+    return this._http.patch<User>(`${this._backendUrl}/users/${id}`, userDetails);
   }
 
   logout(): void {

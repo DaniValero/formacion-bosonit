@@ -8,12 +8,12 @@
       "favoriteSeries": []
     },
     {
-      "name": "Pepe",
+      "name": "Pepito",
       "email": "pepe@gmail.com",
       "password": "123abc",
       "id": 2,
       "favoriteMovies": [
-        238
+        240
       ],
       "favoriteSeries": [
         1396
@@ -26,12 +26,36 @@
       "id": 3,
       "favoriteMovies": [
         346698,
-        615656
+        615656,
+        238,
+        278,
+        121
       ],
       "favoriteSeries": [
-        37854,
         1396
       ]
+    },
+    {
+      "name": "CR7",
+      "email": "cr7@gmail.com",
+      "password": "123abc",
+      "id": 4
+    },
+    {
+      "name": "Isma",
+      "email": "ismael@gmail.com",
+      "password": "123abc",
+      "id": 5,
+      "favoriteMovies": [
+        615656
+      ]
+    },
+    {
+      "name": "Jaelita",
+      "email": "jael@gmail.com",
+      "password": "123abc",
+      "id": 6,
+      "favoriteMovies": []
     }
   ]
 }

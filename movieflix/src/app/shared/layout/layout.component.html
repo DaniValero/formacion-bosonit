@@ -1,6 +1,6 @@
 <div class="top-bar" >
   <p-toolbar>
-    <h3><i class="bi bi-film"></i> Movieflix</h3>
+    <h3 [routerLink]="['/movies/popular']" class="logo"><i class="bi bi-film"></i> Movieflix</h3>
     <shared-search-box (onDebounce)="searchItem($event)" placeholder="Search..."></shared-search-box>
   
     <ng-container *ngIf="isAuthenticated; else guestUser">
