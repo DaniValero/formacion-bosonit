@@ -87,6 +87,10 @@ export class AuthService {
     );
   }
 
+  checkAdmin() {
+    return this._user?.isAdmin ?  true :  false
+  }
+
   updateUser(name: string, email: string, password: string, id:number): Observable<User> {
     const userDetails = { name, email, password };
     return this._http.patch<User>(`${this._backendUrl}/users/${id}`, userDetails);

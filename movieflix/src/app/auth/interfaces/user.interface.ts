@@ -3,7 +3,8 @@ export interface User {
   name: string;
   email: string;
   password: string;
-  favoriteMovies?: number[]
-  favoriteSeries?: number[]
+  favoriteMovies?: number[];
+  favoriteSeries?: number[];
+  isAdmin?: boolean;
 }
 

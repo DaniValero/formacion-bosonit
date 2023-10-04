@@ -5,7 +5,9 @@
       "email": "john.due@gmail.com",
       "password": "1234",
       "favoriteMovies": [],
-      "favoriteSeries": []
+      "favoriteSeries": [],
+      "isAdmin": true,
+      "name": "John"
     },
     {
       "name": "Pepito",
@@ -17,7 +19,8 @@
       ],
       "favoriteSeries": [
         1396
-      ]
+      ],
+      "isAdmin": false
     },
     {
       "name": "Juan",
@@ -33,13 +36,15 @@
       ],
       "favoriteSeries": [
         1396
-      ]
+      ],
+      "isAdmin": false
     },
     {
       "name": "CR7",
       "email": "cr7@gmail.com",
       "password": "123abc",
-      "id": 4
+      "id": 4,
+      "isAdmin": true
     },
     {
       "name": "Isma",
@@ -48,14 +53,16 @@
       "id": 5,
       "favoriteMovies": [
         615656
-      ]
+      ],
+      "isAdmin": false
     },
     {
       "name": "Jaelita",
       "email": "jael@gmail.com",
       "password": "123abc",
       "id": 6,
-      "favoriteMovies": []
+      "favoriteMovies": [],
+      "isAdmin": false
     }
   ]
 }

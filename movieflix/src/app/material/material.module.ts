@@ -14,6 +14,8 @@ import { PaginatorModule } from 'primeng/paginator';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ToastModule } from 'primeng/toast';
+import { TableModule } from 'primeng/table';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
 @NgModule({
   exports: [
@@ -30,7 +32,9 @@ import { ToastModule } from 'primeng/toast';
     PaginatorModule,
     InputTextModule,
     PasswordModule,
-    ToastModule
+    ToastModule,
+    TableModule,
+    ToggleButtonModule
   ],
 })
 export class MaterialModule {}

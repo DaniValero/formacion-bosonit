@@ -15,6 +15,7 @@ export class LayoutComponent implements OnInit{
   public movieItems: MenuItem[] = [];
   public seriesItems: MenuItem[] = [];
   public isAuthenticated?: boolean
+  public isAdmin?: boolean;
 
   constructor(
     private _navigationService: NavigationService,
@@ -71,6 +72,10 @@ export class LayoutComponent implements OnInit{
     if (this._authService.checkAuthentication()) {
       this.isAuthenticated = true
     }
+
+    if (this._authService.checkAdmin()) {
+      this.isAdmin = true
+    }
   }
 
   navigateToLogin() {
@@ -89,6 +94,12 @@ export class LayoutComponent implements OnInit{
       this._navigationService.navigateToProfile(userId!);
     } else {
       this._navigationService.navigateHome()
+    }
+  }
+
+  navigateToAdminPanel() {
+    if (this.isAdmin) {
+      this._router.navigate(['auth/admin'])
     }
   }
 
