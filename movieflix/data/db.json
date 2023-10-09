@@ -1,16 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
-      "email": "john.due@gmail.com",
-      "password": "1234",
-      "favoriteMovies": [],
-      "favoriteSeries": [],
-      "isAdmin": true,
-      "name": "John"
-    },
-    {
-      "name": "Pepito",
+      "name": "Pepe",
       "email": "pepe@gmail.com",
       "password": "123abc",
       "id": 2,
@@ -23,46 +14,11 @@
       "isAdmin": false
     },
     {
-      "name": "Juan",
-      "email": "juan@gmail.com",
-      "password": "123abc",
-      "id": 3,
-      "favoriteMovies": [
-        346698,
-        615656,
-        238,
-        278,
-        121
-      ],
-      "favoriteSeries": [
-        1396
-      ],
-      "isAdmin": false
-    },
-    {
       "name": "CR7",
       "email": "cr7@gmail.com",
       "password": "123abc",
       "id": 4,
       "isAdmin": true
-    },
-    {
-      "name": "Isma",
-      "email": "ismael@gmail.com",
-      "password": "123abc",
-      "id": 5,
-      "favoriteMovies": [
-        615656
-      ],
-      "isAdmin": false
-    },
-    {
-      "name": "Jaelita",
-      "email": "jael@gmail.com",
-      "password": "123abc",
-      "id": 6,
-      "favoriteMovies": [],
-      "isAdmin": false
     }
   ]
 }

@@ -16,6 +16,7 @@ import { PasswordModule } from 'primeng/password';
 import { ToastModule } from 'primeng/toast';
 import { TableModule } from 'primeng/table';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   exports: [
@@ -34,7 +35,8 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
     PasswordModule,
     ToastModule,
     TableModule,
-    ToggleButtonModule
+    ToggleButtonModule,
+    ConfirmDialogModule
   ],
 })
 export class MaterialModule {}

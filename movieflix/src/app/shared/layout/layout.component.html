@@ -6,6 +6,7 @@
     <ng-container *ngIf="isAuthenticated; else guestUser">
       <div class="p-toolbar-group-right top-menu">
         <div [routerLink]="['/movies/popular']"><i class="bi bi-house-fill"></i> Home</div>
+        <div><app-language-selector></app-language-selector></div>
         <div (click)="navigateToProfile()"><i class="bi bi-person-fill"></i> Profile</div>
         <div (click)="logout()"><i class="bi bi-box-arrow-right"></i> Logout</div>
       </div>
@@ -54,7 +55,7 @@
       </p-menu>
     </div>
 
-    <div class="admin-button" >
+    <div class="admin-button" *ngIf="isAdmin">
       <p-button (click)="navigateToAdminPanel()"><i class="bi bi-shield-lock"></i></p-button>
     </div>
 

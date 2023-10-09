@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MoviesService } from 'src/app/movies/services/movies.service';
 import { Movie, Result } from '../../interfaces/movie.interface';
 import { PaginatorState } from '../../../shared/interfaces/pageEvent.interface';
-import { Subject, Subscription, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'most-popular-page',
@@ -16,7 +16,9 @@ export class MostPopularPage implements OnInit, OnDestroy {
 
   private _unsubscribe$ = new Subject<boolean>();
 
-  constructor(private moviesService: MoviesService) {}
+  constructor(
+    private moviesService: MoviesService,
+  ) { }
 
   ngOnInit(): void {
     this.getMovies()

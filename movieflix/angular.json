@@ -4,6 +4,15 @@
   "newProjectRoot": "projects",
   "projects": {
     "Movieflix": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "es-ES": "src/locale/messages.es-ES.json",
+          "it-IT": "src/locale/messages.it-IT.json",
+          "fr-FR": "src/locale/messages.fr-FR.json",
+          "pt-PT": "src/locale/messages.pt-PT.json"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,6 +26,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": ["es-ES", "it-IT", "fr-FR", "pt-PT", "en-US"],
             "outputPath": "dist/movieflix",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -59,7 +69,8 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "localize": ["en-US"]
             }
           },
           "defaultConfiguration": "production"

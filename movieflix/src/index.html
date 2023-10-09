@@ -11,5 +11,9 @@
 </head>
 <body>
   <app-root></app-root>
+  <script>
+    const lang = window.navigator.language || 'en-US';
+    document.querySelector('html').setAttribute('lang', lang);
+  </script>
 </body>
 </html>

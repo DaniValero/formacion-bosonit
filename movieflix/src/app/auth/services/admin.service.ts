@@ -24,6 +24,9 @@ export class AdminService {
     return this._http.put<User>(`${this._backendUrl}/users/${id}`, updatedUser)
   }
 
+  deleteUser(id: number): Observable<User> {
+    return this._http.delete<User>(`${this._backendUrl}/users/${id}`)
+  }
 
 
 
